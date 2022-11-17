@@ -3,10 +3,8 @@ package com.techelevator.application;
 import com.techelevator.models.Inventory;
 import com.techelevator.ui.UserInput;
 import com.techelevator.ui.UserOutput;
-import com.techelevator.view.Colors;
 import com.techelevator.view.Console;
 
-import java.util.Scanner;
 
 public class VendingMachine
 {
