@@ -20,7 +20,7 @@ public class CurrencyController {
             if (amountInt < 1) throw new AmountLessThanOneException();
 
         } catch (AmountLessThanOneException e) {
-            System.out.println("Please enter a whole dollar amount greater or equal to $1");
+            System.out.println("Please enter a whole dollar amount greater than or equal to $1");
         } catch (Exception ex) {
         System.out.println("Please enter a whole dollar amount only");
     }

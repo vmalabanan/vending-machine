@@ -3,8 +3,8 @@ package com.techelevator.ui;
 import com.techelevator.models.CurrencyController;
 import com.techelevator.models.Inventory;
 import com.techelevator.models.products.Product;
+import com.techelevator.view.Console;
 
-import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Map;
 
@@ -38,8 +38,6 @@ public class UserOutput {
         System.out.println("**********************");
         System.out.println();
 
-
-
         // loop through and display products
         for (Map.Entry<Product,Integer> product : inventory.getProducts().entrySet()) {
 
@@ -72,8 +70,9 @@ public class UserOutput {
 
     public static void displayFeedMoneyScreen(CurrencyController currencyController) {
         displayMoneyInMachine(currencyController);
+    }
 
-
-
+    public static void clearScreen() {
+        System.out.println(Console.CLEAR_SCREEN);
     }
 }

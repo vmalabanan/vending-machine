@@ -8,18 +8,30 @@ public class UserInput {
 
     public static String getSelection() {
         System.out.print("Please make a selection: ");
-        String selection = input.nextLine();
 
-        return selection;
+        return input.nextLine();
     }
 
     // TO DO - FINISH getPayment FUNCTION
     public static String getPayment() {
 
-        System.out.println("Please enter the dollar amount you wish to add: $");
-        String amount = input.nextLine();
+        System.out.print("Please enter the dollar amount you wish to add: $");
 
-        return amount;
+        return input.nextLine();
+    }
+
+    public static String addMoreMoneyPrompt() {
+        System.out.print("Add more money? (Y/N): ");
+
+        return input.nextLine();
+
+    }
+
+    public static String returnToPrevScreenPrompt() {
+        System.out.print("\nPress any key to return to previous screen: ");
+
+        return input.nextLine();
+
     }
 
 }
