@@ -1,5 +1,7 @@
 package com.techelevator.models;
 
+import com.techelevator.models.exceptions.InvalidIDException;
+import com.techelevator.models.exceptions.SoldOutException;
 import com.techelevator.models.products.Product;
 
 import java.io.File;
@@ -25,16 +27,14 @@ public class Inventory {
 
     // Methods
 
-    private void loadInventory(){
+    private void loadInventory() {
 
         inventory = new HashMap<>();
 
         File productsFile = new File("data/vendingmachine.csv");
-        try(Scanner reader = new Scanner(productsFile))
-        {
+        try (Scanner reader = new Scanner(productsFile)) {
 
-            while (reader.hasNextLine())
-            {
+            while (reader.hasNextLine()) {
                 String line = reader.nextLine();
                 String[] columns = line.split("\\|");
 
@@ -48,25 +48,48 @@ public class Inventory {
                 // Loads 5 of the product everytime the vending machine initializes
                 inventory.put(product, 5);
             }
-        }
-        catch (IOException ex)
-        {
+        } catch (IOException ex) {
             // TO DO - Logger
             ex.getMessage();
         }
     }
 
-    public Map<Product,Integer> getProducts(){
+    public Map<Product, Integer> getProducts() {
         return inventory;
     }
 
     public void decrementQuantity(Product product) {
         int quantity = inventory.get(product);
-        if (quantity > 0) {
-            quantity--;
-            inventory.put(product, quantity);
+        try {
+            if (quantity > 0) {
+                quantity--;
+                inventory.put(product, quantity);
+            } else {
+                throw new SoldOutException();
+            }
+        } catch (SoldOutException ex) {
+            System.out.println("That item is sold out and unavailable for purchase");
         }
 
+
+    }
+
+    public Product getProductByID(String id) {
+
+        try {
+            //Loops through our entire inventory, and finds the product matching the input ID
+            for (Map.Entry<Product, Integer> product : getProducts().entrySet()) {
+
+                // Validates the given ID
+                if (product.getKey().getId().equals(id)) {
+                    return product.getKey();
+                }
+            }
+            throw new InvalidIDException();
+        } catch (InvalidIDException ex) {
+            System.out.println("The ID you entered is invalid");
+        }
+        return null;
     }
 }
 

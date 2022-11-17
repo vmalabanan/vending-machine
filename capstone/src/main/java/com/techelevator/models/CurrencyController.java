@@ -1,6 +1,7 @@
 package com.techelevator.models;
 
 import com.techelevator.models.exceptions.AmountLessThanOneException;
+import com.techelevator.models.exceptions.InsufficientFundsException;
 
 import java.math.BigDecimal;
 
@@ -26,6 +27,19 @@ public class CurrencyController {
     }
 
         moneyInMachine = moneyInMachine.add(new BigDecimal(amount));
+    }
 
-}
+    public void subtractMoney(BigDecimal price){
+
+        try{
+            if (moneyInMachine.compareTo(price) >= 0) {
+                moneyInMachine = moneyInMachine.subtract(price);
+            } else {
+                throw new InsufficientFundsException();
+            }
+        } catch (InsufficientFundsException ex){
+            System.out.println("You have insufficient funds for this purchase");
+        }
+
+    }
 }

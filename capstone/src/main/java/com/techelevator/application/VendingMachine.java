@@ -2,8 +2,15 @@ package com.techelevator.application;
 
 import com.techelevator.models.CurrencyController;
 import com.techelevator.models.Inventory;
+import com.techelevator.models.exceptions.InsufficientFundsException;
+import com.techelevator.models.exceptions.SoldOutException;
+import com.techelevator.models.products.Product;
 import com.techelevator.ui.UserInput;
 import com.techelevator.ui.UserOutput;
+
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class VendingMachine
@@ -54,7 +61,7 @@ public class VendingMachine
         }
     }
     // TO DO - FINISH purchase METHOD
-    public void purchase() {
+    public void purchase(){
         while (true) {
             // clear screen
             UserOutput.clearScreen();
@@ -96,7 +103,13 @@ public class VendingMachine
                 else if(option.equals("2"))
                 {
                     // make purchase
-                    purchase();
+                    purchaseItem(UserInput.getUserItemId());
+
+                    String choice = UserInput.buyAnotherItemPrompt();
+
+                    // break if they want to return to prev screen
+                    if (choice.equalsIgnoreCase("n")) break;
+
 
                 }
                 else if(option.equals("3"))
@@ -114,4 +127,19 @@ public class VendingMachine
 
     }
 
+
+    public void purchaseItem(String purchaseID){
+
+        Product product = inventory.getProductByID(purchaseID);
+
+        // Charges customer the cost of the item
+        BigDecimal price = product.getPrice();
+        currencyController.subtractMoney(price);
+
+        // decrements quantity in inventory
+        inventory.decrementQuantity(product);
+    }
+
 }
+
+

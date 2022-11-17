@@ -27,6 +27,19 @@ public class UserInput {
 
     }
 
+    public static String buyAnotherItemPrompt() {
+        System.out.print("Buy another item? (Y/N): ");
+
+        return input.nextLine();
+
+    }
+
+    public static String getUserItemId(){
+        System.out.print("Enter the (case-sensitive) ID of the item you wish to buy: ");
+
+        return input.nextLine();
+    }
+
     public static String returnToPrevScreenPrompt() {
         System.out.print("\nPress any key to return to previous screen: ");
 
