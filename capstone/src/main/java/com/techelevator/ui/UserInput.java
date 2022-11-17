@@ -14,11 +14,12 @@ public class UserInput {
     }
 
     // TO DO - FINISH getPayment FUNCTION
-    public static BigDecimal getPayment() {
+    public static String getPayment() {
 
-        System.out.print("Please enter : $ ");
-        String amount = input.nextLine().toLowerCase();
+        System.out.println("Please enter the dollar amount you wish to add: $");
+        String amount = input.nextLine();
 
-        return new BigDecimal(amount);
+        return amount;
     }
+
 }

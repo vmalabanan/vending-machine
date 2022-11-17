@@ -59,5 +59,14 @@ public class Inventory {
     public Map<Product,Integer> getProducts(){
         return inventory;
     }
+
+    public void decrementQuantity(Product product) {
+        int quantity = inventory.get(product);
+        if (quantity > 0) {
+            quantity--;
+            inventory.put(product, quantity);
+        }
+
+    }
 }
 
