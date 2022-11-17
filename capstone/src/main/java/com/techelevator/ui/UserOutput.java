@@ -3,6 +3,10 @@ package com.techelevator.ui;
 import com.techelevator.models.Inventory;
 import com.techelevator.models.products.Product;
 
+import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.util.Map;
+
 public class UserOutput {
     public static void displayWelcomeScreen() {
         System.out.println();
@@ -31,10 +35,18 @@ public class UserOutput {
         System.out.println("**********************");
         System.out.println();
 
-//        // loop through and display products
-//        for (Product product : inventory.getProducts()) {
-//            System.out.println(product.getId() + ") " + product.getName() + "  $" + product.getPrice());
-//        }
+        //Formatting price as a local currency number
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+
+        // loop through and display products
+        for (Map.Entry<Product,Integer> product : inventory.getProducts().entrySet()) {
+
+
+            String id = product.getKey().getId();
+            String name = product.getKey().getName();
+            String price = currency.format(product.getKey().getPrice());
+            System.out.println(id + ") " + name + " " + price);
+        }
 //        displayBackToMainScreenMessage();
 
     }
