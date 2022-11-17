@@ -23,6 +23,7 @@ public class UserOutput {
 
     }
 
+    // TO DO - FINISH displayInventory METHOD
     public static void displayInventory(Inventory inventory) {
         System.out.println();
         System.out.println("**********************");

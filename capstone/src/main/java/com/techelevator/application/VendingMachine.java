@@ -18,13 +18,16 @@ public class VendingMachine
 
         while(true)
         {
+            // clear screen
+            System.out.println(Console.CLEAR_SCREEN);
+
             // display main menu
             UserOutput.displayHomeScreenMenu();
             String option = UserInput.getSelection();
 
             if(option.equals("1"))
             {
-                // do add item task
+                // display inventory
                 UserOutput.displayInventory(inventory);
             }
             else if(option.equals("2"))
@@ -33,7 +36,6 @@ public class VendingMachine
                 purchase();
 
             }
-
             else if(option.equals("3"))
             {
                 // just break to exit the application
@@ -45,7 +47,7 @@ public class VendingMachine
             }
         }
     }
-    // TO DO - FINISH PURCHASE METHOD
+    // TO DO - FINISH purchase METHOD
     public void purchase() {
         // show inventory
         UserOutput.displayInventory(inventory);

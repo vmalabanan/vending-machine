@@ -13,7 +13,7 @@ public class UserInput {
         return selection;
     }
 
-    // TO DO - FINISH GETPAYMENT FUNCTION
+    // TO DO - FINISH getPayment FUNCTION
     public static BigDecimal getPayment() {
 
         System.out.print("Please enter : $ ");
