@@ -5,6 +5,7 @@ import com.techelevator.models.Inventory;
 import com.techelevator.models.products.Product;
 import com.techelevator.view.Console;
 
+import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Map;
 
@@ -84,5 +85,22 @@ public class UserOutput {
         else message += "Chew Chew, Yum!";
 
         System.out.println(message);
+    }
+
+    public static void dispenseChange(CurrencyController currencyController) {
+        // dispense change only if there is money in the machine
+        if (currencyController.getMoneyInMachine().compareTo(BigDecimal.ZERO) > 0) {
+            System.out.println("\nHere's your change!");
+            System.out.println(currencyController.dispenseChange());
+        }
+
+    }
+
+    public static void goodbye() {
+        System.out.println("\nThank you for shopping with Umbrella Corp.");
+    }
+
+    public static void invalidSelection() {
+        System.out.println("\nInvalid selection. Please try again");
     }
 }

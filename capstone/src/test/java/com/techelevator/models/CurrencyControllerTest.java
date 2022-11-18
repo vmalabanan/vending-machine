@@ -27,14 +27,14 @@ public class CurrencyControllerTest {
     public void addMoneyToMachine_ShouldAdd_DollarAmountTendered(){
 
         //Arrange
-        BigDecimal expected = new BigDecimal("10.00");
-        currencyController.addMoneyToMachine("10.00");
+        BigDecimal expected = new BigDecimal("10");
+        currencyController.addMoneyToMachine("10");
 
         //Act
         BigDecimal actual = currencyController.getMoneyInMachine();
 
         //Assert
-        assertEquals("Because a new machine should report 10.00 when 10.00 is added to it", expected, actual);
+        assertEquals("Because a new machine should report 10 when 10 is added to it", expected, actual);
 
     }
 
