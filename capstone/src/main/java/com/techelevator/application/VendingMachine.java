@@ -3,14 +3,14 @@ package com.techelevator.application;
 import com.techelevator.models.CurrencyController;
 import com.techelevator.models.Inventory;
 import com.techelevator.models.exceptions.InsufficientFundsException;
+import com.techelevator.models.exceptions.InvalidIDException;
 import com.techelevator.models.exceptions.SoldOutException;
 import com.techelevator.models.products.Product;
 import com.techelevator.ui.UserInput;
 import com.techelevator.ui.UserOutput;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
+
 
 
 public class VendingMachine
@@ -42,9 +42,6 @@ public class VendingMachine
             }
             else if(option.equals("2"))
             {
-                // clear screen
-                UserOutput.clearScreen();
-
                 // make purchase
                 purchase();
 
@@ -76,11 +73,12 @@ public class VendingMachine
             String option = UserInput.getSelection();
 
             while (true) {
-                // clear screen
-                UserOutput.clearScreen();
 
                 if(option.equals("1"))
                 {
+                    // clear screen
+                    UserOutput.clearScreen();
+
                     // display feed money screen
                     UserOutput.displayMoneyInMachine(currencyController);
 
@@ -102,14 +100,36 @@ public class VendingMachine
                 }
                 else if(option.equals("2"))
                 {
-                    // make purchase
-                    purchaseItem(UserInput.getUserItemId());
+                    // clear screen
+                    UserOutput.clearScreen();
 
-                    String choice = UserInput.buyAnotherItemPrompt();
+                    // display inventory
+                    UserOutput.displayInventory(inventory);
 
-                    // break if they want to return to prev screen
-                    if (choice.equalsIgnoreCase("n")) break;
+                    // get user input
+                    String id = UserInput.getUserItemId();
 
+                    try {
+                        if (!inventory.isIDValid(id)) throw new InvalidIDException();
+                        Product product = inventory.getProductByID(id);
+
+                        // attempt to make purchase
+                        boolean wasPurchaseSuccessful = purchaseItem(product);
+
+                        // if purchase was successful, output vending machine success message
+                        if(wasPurchaseSuccessful) UserOutput.vendingMachineSuccessMessage(product);
+
+                        // show current money provided
+                        UserOutput.displayMoneyInMachine(currencyController);
+
+                        String choice = UserInput.buyAnotherItemPrompt();
+
+                        // break if they want to return to prev screen
+                        if (choice.equalsIgnoreCase("n")) break;
+
+                    } catch (InvalidIDException ex) {
+                        System.out.println("The ID you entered is invalid");
+                    }
 
                 }
                 else if(option.equals("3"))
@@ -128,16 +148,24 @@ public class VendingMachine
     }
 
 
-    public void purchaseItem(String purchaseID){
-
-        Product product = inventory.getProductByID(purchaseID);
-
+    public boolean purchaseItem(Product product){
         // Charges customer the cost of the item
         BigDecimal price = product.getPrice();
-        currencyController.subtractMoney(price);
 
-        // decrements quantity in inventory
-        inventory.decrementQuantity(product);
+        try {
+            // subtract price from money in machine
+            currencyController.subtractMoney(price);
+            // decrements quantity in inventory
+            inventory.decrementQuantity(product);
+            // if successful, return true
+            return true;
+        } catch (InsufficientFundsException ex) {
+            System.out.println("You have insufficient funds for this purchase");
+        } catch (SoldOutException ex) {
+            System.out.println("That item is sold out and unavailable for purchase");
+        }
+
+        return false;
     }
 
 }

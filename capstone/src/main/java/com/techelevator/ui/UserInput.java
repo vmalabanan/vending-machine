@@ -7,7 +7,7 @@ public class UserInput {
     private static Scanner input = new Scanner(System.in);
 
     public static String getSelection() {
-        System.out.print("Please make a selection: ");
+        System.out.print("\nPlease make a selection: ");
 
         return input.nextLine();
     }
@@ -21,21 +21,21 @@ public class UserInput {
     }
 
     public static String addMoreMoneyPrompt() {
-        System.out.print("Add more money? (Y/N): ");
+        System.out.print("\nAdd more money? (Y/N): ");
 
         return input.nextLine();
 
     }
 
     public static String buyAnotherItemPrompt() {
-        System.out.print("Buy another item? (Y/N): ");
+        System.out.print("\nBuy another item? (Y/N): ");
 
         return input.nextLine();
 
     }
 
     public static String getUserItemId(){
-        System.out.print("Enter the (case-sensitive) ID of the item you wish to buy: ");
+        System.out.print("\nEnter the (case-sensitive) ID of the item you wish to buy: ");
 
         return input.nextLine();
     }

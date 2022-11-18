@@ -29,16 +29,11 @@ public class CurrencyController {
         moneyInMachine = moneyInMachine.add(new BigDecimal(amount));
     }
 
-    public void subtractMoney(BigDecimal price){
-
-        try{
-            if (moneyInMachine.compareTo(price) >= 0) {
-                moneyInMachine = moneyInMachine.subtract(price);
-            } else {
-                throw new InsufficientFundsException();
-            }
-        } catch (InsufficientFundsException ex){
-            System.out.println("You have insufficient funds for this purchase");
+    public void subtractMoney(BigDecimal price) throws InsufficientFundsException {
+        if (moneyInMachine.compareTo(price) >= 0) {
+            moneyInMachine = moneyInMachine.subtract(price);
+        } else {
+            throw new InsufficientFundsException();
         }
 
     }
