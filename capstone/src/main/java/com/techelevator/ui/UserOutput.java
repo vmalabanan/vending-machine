@@ -4,6 +4,7 @@ import com.techelevator.models.CurrencyController;
 import com.techelevator.models.Inventory;
 import com.techelevator.models.products.Product;
 import com.techelevator.ui.asciiArt.Umbrella;
+import com.techelevator.ui.asciiArt.UmbrellaCorpLogo;
 import com.techelevator.view.Console;
 
 import java.math.BigDecimal;
@@ -15,11 +16,12 @@ public class UserOutput {
     private static NumberFormat currency = NumberFormat.getCurrencyInstance();
     public static void displayWelcomeScreen() {
         System.out.println();
-        System.out.println("**********************");
-        System.out.println("Welcome to my totally normal");
+        System.out.println("*****************************");
+        System.out.println("Welcome to our totally normal");
         System.out.println("non-criminal vending machine!");
-        System.out.println("**********************");
+        System.out.println("*****************************");
         Umbrella.printUmbrella();
+        UmbrellaCorpLogo.printUmbrellaCorpLogo();
     }
 
 
