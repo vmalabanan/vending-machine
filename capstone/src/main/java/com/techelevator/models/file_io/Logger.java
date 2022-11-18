@@ -21,7 +21,7 @@ public class Logger {
         this.directory = directory;
     }
 
-    public void logMessage(String action, String actionAmount, BigDecimal balance){
+    public void logMessage(String action, BigDecimal actionAmount, BigDecimal balance){
 
 
         // Sets the fileName to be the date in YYYY-MM-DD format
@@ -37,9 +37,6 @@ public class Logger {
         try(FileWriter fileWriter = new FileWriter(logFile, true);
             PrintWriter writer = new PrintWriter(fileWriter)){
 
-            //Format dollar amounts
-            BigDecimal actionValue = new BigDecimal(actionAmount);
-
             // Opens the log file and appends the new message
             LocalDateTime now = LocalDateTime.now();
 
@@ -48,7 +45,7 @@ public class Logger {
             String formatDateTime = now.format(formatter);
 
             // Prints the action and values to the log file
-            writer.println(formatDateTime + " " + action + ": " + currency.format(actionValue) + " " + currency.format(balance));
+            writer.println(formatDateTime + " " + action + ": " + currency.format(actionAmount) + " " + currency.format(balance));
         } catch (Exception ex){
             //Swallow the exception
         }

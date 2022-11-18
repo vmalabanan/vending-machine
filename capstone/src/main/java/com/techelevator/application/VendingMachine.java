@@ -163,7 +163,7 @@ public class VendingMachine
                             UserOutput.vendingMachineSuccessMessage(product);
 
                             // Logs the purchase
-                            logger.logMessage(product.getName(), product.getPrice().toString(), currencyController.getMoneyInMachine());
+                            logger.logMessage((product.getName() + product.getId()) , product.getPrice(), currencyController.getMoneyInMachine());
                         }
 
                     } catch (InvalidIDException ex) {
@@ -231,9 +231,6 @@ public class VendingMachine
         // add money to currencyController
         currencyController.addMoneyToMachine(payment);
 
-        // Log the transaction
-        logger.logMessage("FEED MONEY", payment, currencyController.getMoneyInMachine());
-
         // show current money provided
         UserOutput.displayMoneyInMachine(currencyController);
 
@@ -253,6 +250,8 @@ public class VendingMachine
                 currencyController.subtractMoney(price);
                 // decrement quantity in inventory
                 inventory.decrementQuantity(product);
+                // Log the transaction
+                logger.logMessage("FEED MONEY", price, currencyController.getMoneyInMachine());
                 // if successful, return true
                 return true;
             }
