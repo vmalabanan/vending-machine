@@ -55,7 +55,7 @@ public class UserOutput {
     }
 
     public static void displayMoneyInMachine(CurrencyController currencyController) {
-        String str = "Current money provided: ";
+        String str = "\nBalance: ";
         String money = currency.format(currencyController.getMoneyInMachine());
 
         System.out.println(str + money);
@@ -74,5 +74,15 @@ public class UserOutput {
 
     public static void clearScreen() {
         System.out.println(Console.CLEAR_SCREEN);
+    }
+
+    public static void vendingMachineSuccessMessage(Product product) {
+        String message = "\n";
+        if (product.getType().equalsIgnoreCase("chip")) message += "Crunch Crunch, Yum!";
+        else if (product.getType().equalsIgnoreCase("candy")) message += "Munch Munch, Yum!";
+        else if (product.getType().equalsIgnoreCase("drink")) message += "Glug Glug, Yum!";
+        else message += "Chew Chew, Yum!";
+
+        System.out.println(message);
     }
 }
