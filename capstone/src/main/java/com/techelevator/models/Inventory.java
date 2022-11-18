@@ -94,5 +94,9 @@ public class Inventory {
         }
         return null;
     }
+
+    public Integer getQuantity(Product product) {
+        return inventory.get(product);
+    }
 }
 
