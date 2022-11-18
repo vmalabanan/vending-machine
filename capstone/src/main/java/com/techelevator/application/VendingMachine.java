@@ -115,6 +115,9 @@ public class VendingMachine
                     // display inventory
                     UserOutput.displayInventory(inventory);
 
+                    // show current money provided
+                    UserOutput.displayMoneyInMachine(currencyController);
+
                     // get user input
                     String id = UserInput.getUserItemId();
 
@@ -128,12 +131,14 @@ public class VendingMachine
                         // if purchase was successful, output vending machine success message
                         if(wasPurchaseSuccessful) UserOutput.vendingMachineSuccessMessage(product);
 
-
                     } catch (InvalidIDException ex) {
                         System.out.println("\nThe ID you entered is invalid");
                     } finally {
                         // show current money provided
                         UserOutput.displayMoneyInMachine(currencyController);
+
+                        // if money in machine <= 0, break
+                        if (currencyController.getMoneyInMachine().compareTo(BigDecimal.ZERO) <= 0) break;
 
                         String choice = UserInput.buyAnotherItemPrompt();
 
