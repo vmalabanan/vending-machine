@@ -37,7 +37,7 @@ public class VendingMachineTest {
         //Arrange
         ByteArrayInputStream in = new ByteArrayInputStream("1\n\n3\n".getBytes());
         System.setIn(in);
-        String expected = mainMenu_output_if_option_equals_1(); // will set this once our screens are finalized
+        String expected = mainMenu_output_if_option_equals_1();
 
         //Act
         vendingMachine.mainMenu();
@@ -49,7 +49,8 @@ public class VendingMachineTest {
     }
 
     private String mainMenu_output_if_option_equals_1() {
-        String string = "[H\u001B[2J\n" +
+
+        return "[H\u001B[2J\n" +
                 "\n" +
                 "**********************\n" +
                 "Home\n" +
@@ -96,10 +97,6 @@ public class VendingMachineTest {
                 "Please make a selection: \u001B[H\u001B[2J\n" +
                 "\n" +
                 "Thank you for shopping with Umbrella Corp.";
-
-
-
-        return string;
     }
 
 }
