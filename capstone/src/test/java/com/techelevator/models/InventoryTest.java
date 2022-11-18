@@ -1,5 +1,7 @@
 package com.techelevator.models;
 
+import com.techelevator.models.exceptions.InvalidIDException;
+import com.techelevator.models.exceptions.SoldOutException;
 import com.techelevator.models.products.Product;
 import org.junit.After;
 import org.junit.Before;
@@ -28,7 +30,7 @@ public class InventoryTest {
     }
 
     @Test
-    public void decrementQuantity_Should_SubtractOne(){
+    public void decrementQuantity_Should_SubtractOne() throws SoldOutException {
 
         //Arrange
         int expected = 4;
@@ -41,8 +43,8 @@ public class InventoryTest {
         assertEquals("Because decrementQuantity should subtract one from the total", expected, actual);
     }
 
-    @Test
-    public void decrementQuantity_ShouldPrint_SoldOut_WhenValueIsZero(){
+    @Test(expected = SoldOutException.class)
+    public void decrementQuantity_ShouldPrint_SoldOut_WhenValueIsZero() throws SoldOutException {
 
         //Arrange
         String expected = "That item is sold out and unavailable for purchase";
@@ -76,14 +78,13 @@ public class InventoryTest {
 
 
     @Test
-    public void getProductByID_ShouldPrint_InvalidID_OnInvalidID(){
+    public void isIDValid_ShouldReturn_False_OnInvalidID() {
 
         //Arrange
-        String expected = "The ID you entered is invalid";
+        Boolean expected = false;
 
         //Act
-        inventory.getProductByID("buffalo");
-        String actual = outputStreamCaptor.toString().trim();
+        boolean actual = inventory.isIDValid("buffalo");
 
         //Assert
         assertEquals("Because the invalid ID error message should print when there are no more of the item in inventory", expected, actual);

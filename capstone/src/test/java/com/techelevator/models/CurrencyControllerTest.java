@@ -1,5 +1,6 @@
 package com.techelevator.models;
 
+import com.techelevator.models.exceptions.InsufficientFundsException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -68,7 +69,7 @@ public class CurrencyControllerTest {
     }
 
     @Test
-    public void subtractMoney_Should_SubtractPriceFromMoneyInMachine(){
+    public void subtractMoney_Should_SubtractPriceFromMoneyInMachine() throws InsufficientFundsException {
 
         //Arrange
         BigDecimal price = new BigDecimal(5);
@@ -84,8 +85,8 @@ public class CurrencyControllerTest {
 
     }
 
-    @Test
-    public void subtractMoney_ShouldPrint_InsufficientFunds_OnZeroInMachine(){
+    @Test(expected = InsufficientFundsException.class)
+    public void subtractMoney_ShouldPrint_InsufficientFunds_OnZeroInMachine() throws InsufficientFundsException {
 
         //Arrange
         String expected = "You have insufficient funds for this purchase";
@@ -100,8 +101,8 @@ public class CurrencyControllerTest {
 
     }
 
-    @Test
-    public void subtractMoney_ShouldPrint_InsufficientFunds_WhenPriceExceedsAvailableMoney(){
+    @Test(expected = InsufficientFundsException.class)
+    public void subtractMoney_ShouldPrint_InsufficientFunds_WhenPriceExceedsAvailableMoney() throws InsufficientFundsException{
 
         //Arrange
         String expected = "You have insufficient funds for this purchase";
