@@ -12,8 +12,6 @@ import com.techelevator.ui.UserOutput;
 
 import java.math.BigDecimal;
 
-
-
 public class VendingMachine
 {
 
@@ -23,6 +21,9 @@ public class VendingMachine
 
         public void run()
     {
+        // clear screen
+        UserOutput.clearScreen();
+
         // display a welcome screen
         welcome();
 
@@ -37,13 +38,14 @@ public class VendingMachine
         // prompt user to press enter to continue
         UserInput.pressEnterToContinuePrompt();
 
-        // clear screen
-        UserOutput.clearScreen();
     }
 
     public void mainMenu() {
         while(true)
         {
+            // clear screen
+            UserOutput.clearScreen();
+
             UserOutput.displayHomeScreenMenu();
             String option = UserInput.getSelection();
 
@@ -75,8 +77,14 @@ public class VendingMachine
             }
             else
             {
+
                 // invalid option try again
                 UserOutput.invalidSelection();
+
+                // prompt user to press enter to continue
+                UserInput.pressEnterToContinuePrompt();
+
+
             }
         }
     }
@@ -134,6 +142,11 @@ public class VendingMachine
                     // show current money provided
                     UserOutput.displayMoneyInMachine(currencyController);
 
+                    // if there's no money in machine, display no money message
+                    if (currencyController.getMoneyInMachine().compareTo(BigDecimal.ZERO) <= 0) {
+                        UserInput.noMoneyInMachineMessage();
+                        break;
+                    }
 
                     // get user input
                     String id = UserInput.getUserItemId();
@@ -172,12 +185,30 @@ public class VendingMachine
                 // Finish transaction
                 else if(option.equals("3"))
                 {
+                    // clear screen
+                    UserOutput.clearScreen();
+
                     // dispense change to the user
                     UserOutput.dispenseChange(currencyController);
+
+                    // prompt user to press enter to continue
+                    UserInput.pressEnterToContinuePrompt();
 
                     // set keepLooping to false
                     keepLooping = false;
 
+                    break;
+
+                }
+                else
+                {
+                    // invalid option try again
+                    UserOutput.invalidSelection();
+
+                    // prompt user to press enter to continue
+                    UserInput.pressEnterToContinuePrompt();
+
+                    // break
                     break;
 
                 }

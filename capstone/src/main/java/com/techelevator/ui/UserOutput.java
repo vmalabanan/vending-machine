@@ -31,7 +31,6 @@ public class UserOutput {
 
     }
 
-    // TO DO - FINISH displayInventory METHOD
     public static void displayInventory(Inventory inventory) {
         System.out.println();
         System.out.println("**********************");
@@ -51,7 +50,6 @@ public class UserOutput {
 
             System.out.println(id + ") " + name + " " + price + " - " + displayQuantity);
         }
-//        displayBackToMainScreenMessage();
 
     }
 
@@ -88,12 +86,14 @@ public class UserOutput {
     }
 
     public static void dispenseChange(CurrencyController currencyController) {
+        String money = currency.format(currencyController.getMoneyInMachine());
+
         // dispense change only if there is money in the machine
         if (currencyController.getMoneyInMachine().compareTo(BigDecimal.ZERO) > 0) {
             System.out.println("\nHere's your change!");
             System.out.println(currencyController.dispenseChange());
+            System.out.println("\n------------\n" + money);
         }
-
     }
 
     public static void goodbye() {
@@ -103,4 +103,6 @@ public class UserOutput {
     public static void invalidSelection() {
         System.out.println("\nInvalid selection. Please try again");
     }
+
+
 }

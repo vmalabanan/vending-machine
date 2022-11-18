@@ -46,4 +46,8 @@ public class UserInput {
         input.nextLine();
     }
 
+    public static void noMoneyInMachineMessage() {
+        System.out.println("Please input funds. Press enter to return to previous screen.");
+        input.nextLine();
+    }
 }

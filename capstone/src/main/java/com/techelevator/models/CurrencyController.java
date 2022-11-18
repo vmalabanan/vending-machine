@@ -74,7 +74,6 @@ public class CurrencyController {
             }
 
         }
-        change += "\n------------\n$" + balance;
         return change;
     }
 }
