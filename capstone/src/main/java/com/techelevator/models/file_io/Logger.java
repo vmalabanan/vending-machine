@@ -11,7 +11,8 @@ import java.time.format.DateTimeFormatter;
 
 public class Logger {
 
-    private static final String FILE_EXTENSION = "log.txt";
+    private static final String FILE_EXTENSION = ".txt";
+    private static final String FILE_TYPE = "_log";
     private static final NumberFormat currency = NumberFormat.getCurrencyInstance();
 
     private final String directory;
@@ -25,7 +26,7 @@ public class Logger {
 
 
         // Sets the fileName to be the date in YYYY-MM-DD format
-        String fileName = LocalDate.now().format(DateTimeFormatter.ISO_DATE);
+        String fileName = LocalDate.now().format(DateTimeFormatter.ISO_DATE) + FILE_TYPE;
 
         // Sets log file path
         String logFilePath = directory + "/" + fileName + FILE_EXTENSION;

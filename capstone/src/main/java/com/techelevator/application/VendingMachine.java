@@ -7,6 +7,7 @@ import com.techelevator.models.exceptions.InsufficientFundsException;
 import com.techelevator.models.exceptions.InvalidIDException;
 import com.techelevator.models.exceptions.SoldOutException;
 import com.techelevator.models.file_io.Logger;
+import com.techelevator.models.file_io.SalesReportPrinter;
 import com.techelevator.models.products.Product;
 import com.techelevator.ui.UserInput;
 import com.techelevator.ui.UserOutput;
@@ -20,6 +21,7 @@ public class VendingMachine
     private Inventory inventory = new Inventory();
     private CurrencyController currencyController = new CurrencyController();
     private Logger logger = new Logger("data");
+    private SalesReportPrinter salesReportPrinter = new SalesReportPrinter("data");
 
         public void run()
     {
@@ -162,8 +164,11 @@ public class VendingMachine
                         if(wasPurchaseSuccessful) {
                             UserOutput.vendingMachineSuccessMessage(product);
 
-                            // Logs the purchase
+                            // Logs the purchase in the transaction logger
                             logger.logMessage((product.getName() + product.getId()) , product.getPrice(), currencyController.getMoneyInMachine());
+
+                            // Logs the purchase in the Sales Report
+                            salesReportPrinter.logSale(product);
                         }
 
                     } catch (InvalidIDException ex) {
