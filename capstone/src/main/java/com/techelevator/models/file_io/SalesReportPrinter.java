@@ -10,6 +10,8 @@ import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -85,5 +87,23 @@ public class SalesReportPrinter {
 
     }
 
+    public void printReport() {
 
+        // Timestamps the created file
+        String timeStamp = LocalDate.now().format(DateTimeFormatter.ISO_DATE);
+
+        // creates paths for files
+        String readFilePath = directory + "/" + FILE_TYPE + FILE_EXTENSION;
+        String copyFilePath = directory + "/" + timeStamp + FILE_TYPE + FILE_EXTENSION;
+        Path original = Path.of(readFilePath);
+        Path copy = Path.of(copyFilePath);
+
+        // Copies the sales report so that it can read from the copy and write to the master
+        try{
+            Files.copy(original, copy);
+        } catch (Exception ex) {
+            System.out.println("Could not create print file");
+        }
+
+    }
 }

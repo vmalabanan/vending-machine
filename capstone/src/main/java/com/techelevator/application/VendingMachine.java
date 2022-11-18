@@ -76,7 +76,7 @@ public class VendingMachine
                 break;
             }
             else if(option.equals("4")) {
-                // Sales report
+                salesReportPrinter.printReport();
 
             }
             else

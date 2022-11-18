@@ -77,7 +77,7 @@ public class Inventory {
         for (Map.Entry<Product, Integer> product : getProducts().entrySet()) {
 
             // Validates the given ID
-            if (product.getKey().getId().equals(id)) {
+            if (product.getKey().getId().equalsIgnoreCase(id)) {
                 return true;
             }
         }
@@ -89,7 +89,7 @@ public class Inventory {
         for (Map.Entry<Product, Integer> product : getProducts().entrySet()) {
 
             // Validates the given ID
-            if (product.getKey().getId().equals(id)) {
+            if (product.getKey().getId().equalsIgnoreCase(id)) {
                 return product.getKey();
             }
         }
