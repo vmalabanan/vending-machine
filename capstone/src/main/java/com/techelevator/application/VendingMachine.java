@@ -34,7 +34,7 @@ public class VendingMachine
 
     }
 
-    private void welcome() {
+    public void welcome() {
         UserOutput.displayWelcomeScreen();
 
         // prompt user to press enter to continue
@@ -89,7 +89,7 @@ public class VendingMachine
         }
     }
 
-    private void displayInventoryScreen() {
+    public void displayInventoryScreen() {
         UserOutput.displayInventory(inventory);
 
         // prompt user to press enter to continue
