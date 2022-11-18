@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Logger {
 
-    private static final String FILE_EXTENSION = ".log";
+    private static final String FILE_EXTENSION = "log.txt";
     private static final NumberFormat currency = NumberFormat.getCurrencyInstance();
 
     private final String directory;
