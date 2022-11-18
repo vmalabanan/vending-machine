@@ -7,14 +7,13 @@ import com.techelevator.models.products.Product;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Inventory {
 
     // Properties
     private Map<Product, Integer> inventory;
+    List<Product> organizedProducts;
 
 
     // Constructor
@@ -28,6 +27,7 @@ public class Inventory {
     private void loadInventory() {
 
         inventory = new HashMap<>();
+        organizedProducts = new ArrayList<>();
 
         File productsFile = new File("data/vendingmachine.csv");
         try (Scanner reader = new Scanner(productsFile)) {
@@ -45,6 +45,9 @@ public class Inventory {
 
                 // Loads 5 of the product everytime the vending machine initializes
                 inventory.put(product, 5);
+
+                // Arranges the products in their organized array for display purposes
+                organizedProducts.add(product);
             }
         } catch (IOException ex) {
             // TO DO - Logger
@@ -55,6 +58,8 @@ public class Inventory {
     public Map<Product, Integer> getProducts() {
         return inventory;
     }
+
+    public List<Product> getOrganizedProducts() { return organizedProducts; }
 
     public void decrementQuantity(Product product) throws SoldOutException {
         int quantity = inventory.get(product);

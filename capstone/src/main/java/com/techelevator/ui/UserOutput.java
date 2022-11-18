@@ -39,13 +39,13 @@ public class UserOutput {
         System.out.println();
 
         // loop through and display products
-        for (Map.Entry<Product,Integer> product : inventory.getProducts().entrySet()) {
+        for (Product product : inventory.getOrganizedProducts()) {
 
 
-            String id = product.getKey().getId();
-            String name = product.getKey().getName();
-            String price = currency.format(product.getKey().getPrice());
-            int quantity = product.getValue();
+            String id = product.getId();
+            String name = product.getName();
+            String price = currency.format(product.getPrice());
+            int quantity = inventory.getQuantity(product);
             String displayQuantity = quantity == 0 ? "Out of stock" : quantity + " in stock";
 
             System.out.println(id + ") " + name + " " + price + " - " + displayQuantity);
