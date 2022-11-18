@@ -2,6 +2,7 @@ package com.techelevator.application;
 
 import com.techelevator.models.CurrencyController;
 import com.techelevator.models.Inventory;
+import com.techelevator.models.exceptions.AmountLessThanOneException;
 import com.techelevator.models.exceptions.InsufficientFundsException;
 import com.techelevator.models.exceptions.InvalidIDException;
 import com.techelevator.models.exceptions.SoldOutException;
@@ -11,6 +12,7 @@ import com.techelevator.ui.UserInput;
 import com.techelevator.ui.UserOutput;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 public class VendingMachine
 {
@@ -188,6 +190,9 @@ public class VendingMachine
                     // clear screen
                     UserOutput.clearScreen();
 
+                    // Logs the purchase
+                    logger.logMessage("DISPENSE CHANGE" , currencyController.getMoneyInMachine(), new BigDecimal(BigInteger.ZERO));
+
                     // dispense change to the user
                     UserOutput.dispenseChange(currencyController);
 
@@ -229,8 +234,15 @@ public class VendingMachine
         String payment = UserInput.getPayment();
 
         // add money to currencyController
-        currencyController.addMoneyToMachine(payment);
-
+        try {
+            currencyController.addMoneyToMachine(payment);
+            //Log the transaction
+            logger.logMessage("FEED MONEY", new BigDecimal(payment), currencyController.getMoneyInMachine());
+        }catch (AmountLessThanOneException ex) {
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println("\nPlease enter a whole dollar amount only");
+        }
         // show current money provided
         UserOutput.displayMoneyInMachine(currencyController);
 
@@ -250,8 +262,6 @@ public class VendingMachine
                 currencyController.subtractMoney(price);
                 // decrement quantity in inventory
                 inventory.decrementQuantity(product);
-                // Log the transaction
-                logger.logMessage("FEED MONEY", price, currencyController.getMoneyInMachine());
                 // if successful, return true
                 return true;
             }

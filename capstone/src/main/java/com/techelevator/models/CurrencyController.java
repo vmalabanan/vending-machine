@@ -14,20 +14,19 @@ public class CurrencyController {
         return moneyInMachine;
     }
 
-    public void addMoneyToMachine(String amount) {
+    public void addMoneyToMachine(String amount) throws AmountLessThanOneException{
 
         try {
             // make sure amount is a whole number
             int amountInt = Integer.parseInt(amount);
             // make sure amount is at least 1
-            if (amountInt < 1) throw new AmountLessThanOneException("\nPlease enter a whole dollar amount greater than or equal to $1", amountInt);
+            if (amountInt < 1)
+                throw new AmountLessThanOneException("\nPlease enter a whole dollar amount greater than or equal to $1", amountInt);
             moneyInMachine = moneyInMachine.add(new BigDecimal(amount));
+        } catch (NumberFormatException ex){
+            System.out.println("Please enter a whole dollar amount only");
+        }
 
-        } catch (AmountLessThanOneException ex) {
-            System.out.println(ex.getMessage());
-        } catch (Exception ex) {
-        System.out.println("\nPlease enter a whole dollar amount only");
-    }
 
     }
 
