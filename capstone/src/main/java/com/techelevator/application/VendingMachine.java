@@ -83,8 +83,6 @@ public class VendingMachine
 
                 // prompt user to press enter to continue
                 UserInput.pressEnterToContinuePrompt();
-
-
             }
         }
     }
@@ -266,8 +264,4 @@ public class VendingMachine
 
         return false;
     }
-
-
 }
-
-
