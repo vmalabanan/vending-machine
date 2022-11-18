@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.NumberFormat;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class SalesReportPrinter {
@@ -67,6 +68,10 @@ public class SalesReportPrinter {
                     sales = sales.add(product.getPrice());
 
                     totalSales[1] = currency.format(sales);
+                    line = Arrays.toString(totalSales);
+                    line = line.replace("[", "");
+                    line = line.replace("]","");
+                    line = line.replace(", ", "");
                 }
 
                 // Writes either the unaffected line, or the incremented line to the sales report
