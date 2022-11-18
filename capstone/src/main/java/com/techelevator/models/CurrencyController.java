@@ -1,5 +1,6 @@
 package com.techelevator.models;
 
+import com.techelevator.application.VendingMachine;
 import com.techelevator.models.exceptions.AmountLessThanOneException;
 import com.techelevator.models.exceptions.InsufficientFundsException;
 import java.math.BigDecimal;
@@ -19,11 +20,11 @@ public class CurrencyController {
             // make sure amount is a whole number
             int amountInt = Integer.parseInt(amount);
             // make sure amount is at least 1
-            if (amountInt < 1) throw new AmountLessThanOneException();
+            if (amountInt < 1) throw new AmountLessThanOneException("\nPlease enter a whole dollar amount greater than or equal to $1", amountInt);
             moneyInMachine = moneyInMachine.add(new BigDecimal(amount));
 
         } catch (AmountLessThanOneException ex) {
-            System.out.println("\nPlease enter a whole dollar amount greater than or equal to $1");
+            System.out.println(ex.getMessage());
         } catch (Exception ex) {
         System.out.println("\nPlease enter a whole dollar amount only");
     }

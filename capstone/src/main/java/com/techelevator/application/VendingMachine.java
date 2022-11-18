@@ -5,6 +5,7 @@ import com.techelevator.models.Inventory;
 import com.techelevator.models.exceptions.InsufficientFundsException;
 import com.techelevator.models.exceptions.InvalidIDException;
 import com.techelevator.models.exceptions.SoldOutException;
+import com.techelevator.models.file_io.Logger;
 import com.techelevator.models.products.Product;
 import com.techelevator.ui.UserInput;
 import com.techelevator.ui.UserOutput;
@@ -15,8 +16,11 @@ import java.math.BigDecimal;
 
 public class VendingMachine
 {
+
     private Inventory inventory = new Inventory();
     private CurrencyController currencyController = new CurrencyController();
+    private Logger logger = new Logger("data");
+
         public void run()
     {
         // display a welcome screen
@@ -104,6 +108,8 @@ public class VendingMachine
             String option = UserInput.getSelection();
 
             while (true) {
+
+                // Feed Money
                 if(option.equals("1"))
                 {
                     // display feedMoneyScreen
@@ -116,6 +122,7 @@ public class VendingMachine
                     if (choice.equalsIgnoreCase("n")) break;
 
                 }
+                // Purchase product
                 else if(option.equals("2"))
                 {
                     // clear screen
@@ -139,7 +146,12 @@ public class VendingMachine
                         boolean wasPurchaseSuccessful = purchaseItem(product);
 
                         // if purchase was successful, output vending machine success message
-                        if(wasPurchaseSuccessful) UserOutput.vendingMachineSuccessMessage(product);
+                        if(wasPurchaseSuccessful) {
+                            UserOutput.vendingMachineSuccessMessage(product);
+
+                            // Logs the purchase
+                            logger.logMessage(product.getName(), product.getPrice().toString(), currencyController.getMoneyInMachine());
+                        }
 
                     } catch (InvalidIDException ex) {
                         System.out.println("\nThe ID you entered is invalid");
@@ -157,6 +169,7 @@ public class VendingMachine
                     }
 
                 }
+                // Finish transaction
                 else if(option.equals("3"))
                 {
                     // dispense change to the user
@@ -186,6 +199,9 @@ public class VendingMachine
 
         // add money to currencyController
         currencyController.addMoneyToMachine(payment);
+
+        // Log the transaction
+        logger.logMessage("FEED MONEY", payment, currencyController.getMoneyInMachine());
 
         // show current money provided
         UserOutput.displayMoneyInMachine(currencyController);
@@ -217,11 +233,9 @@ public class VendingMachine
             System.out.println("\nThat item is sold out and unavailable for purchase");
         }
 
-
-
-
         return false;
     }
+
 
 }
 

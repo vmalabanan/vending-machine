@@ -1,5 +1,7 @@
 package com.techelevator.models.exceptions;
 
+import com.techelevator.models.file_io.Logger;
+
 public class AmountLessThanOneException extends Exception {
 
     private int amountEntered;
@@ -15,7 +17,7 @@ public class AmountLessThanOneException extends Exception {
 
         String message = super.getMessage();
 
-        return message + " - Illegal amount entered: " + amountEntered;
+        return message + ": Illegal amount entered: $" + amountEntered;
     }
 
 }
