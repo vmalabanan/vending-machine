@@ -22,6 +22,12 @@ public class VendingMachine
         // display a welcome screen
         UserOutput.displayWelcomeScreen();
 
+        // prompt user to press enter to continue
+        UserInput.pressEnterToContinuePrompt();
+
+        // clear screen
+        UserOutput.clearScreen();
+
         while(true)
         {
             // display main menu
@@ -36,8 +42,11 @@ public class VendingMachine
                 // display inventory
                 UserOutput.displayInventory(inventory);
 
-                // prompt user to press any key to return to the previous screen
-                String choice = UserInput.returnToPrevScreenPrompt();
+                // prompt user to press enter to continue
+                UserInput.pressEnterToContinuePrompt();
+
+                // clear screen
+                UserOutput.clearScreen();
 
             }
             else if(option.equals("2"))
@@ -119,6 +128,10 @@ public class VendingMachine
                         // if purchase was successful, output vending machine success message
                         if(wasPurchaseSuccessful) UserOutput.vendingMachineSuccessMessage(product);
 
+
+                    } catch (InvalidIDException ex) {
+                        System.out.println("\nThe ID you entered is invalid");
+                    } finally {
                         // show current money provided
                         UserOutput.displayMoneyInMachine(currencyController);
 
@@ -126,9 +139,6 @@ public class VendingMachine
 
                         // break if they want to return to prev screen
                         if (choice.equalsIgnoreCase("n")) break;
-
-                    } catch (InvalidIDException ex) {
-                        System.out.println("The ID you entered is invalid");
                     }
 
                 }

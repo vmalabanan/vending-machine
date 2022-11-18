@@ -40,11 +40,10 @@ public class UserInput {
         return input.nextLine();
     }
 
-    public static String returnToPrevScreenPrompt() {
-        System.out.print("\nPress any key to return to previous screen: ");
+    public static void pressEnterToContinuePrompt() {
+        System.out.print("\nPress enter to continue ");
 
-        return input.nextLine();
-
+        input.nextLine();
     }
 
 }
