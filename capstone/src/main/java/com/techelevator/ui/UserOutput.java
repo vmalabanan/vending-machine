@@ -92,7 +92,7 @@ public class UserOutput {
         if (currencyController.getMoneyInMachine().compareTo(BigDecimal.ZERO) > 0) {
             System.out.println("\nHere's your change!");
             System.out.println(currencyController.dispenseChange());
-            System.out.println("\n------------\n" + money);
+            System.out.println("------------\n" + money);
         }
     }
 

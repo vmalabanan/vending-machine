@@ -66,22 +66,22 @@ public class VendingMachineTest {
                 "Products\n" +
                 "**********************\n" +
                 "\n" +
-                "C2) Dr. Salt $1.50 - 5 in stock\n" +
-                "B2) Cowtales $1.50 - 5 in stock\n" +
+                "A1) Potato Crisps $3.05 - 5 in stock\n" +
                 "A2) Stackers $1.45 - 5 in stock\n" +
+                "A3) Grain Waves $2.75 - 5 in stock\n" +
                 "A4) Cloud Popcorn $3.65 - 5 in stock\n" +
-                "D1) U-Chews $0.85 - 5 in stock\n" +
-                "D4) Triplemint $0.75 - 5 in stock\n" +
-                "D2) Little League Chew $0.95 - 5 in stock\n" +
-                "D3) Chiclets $0.75 - 5 in stock\n" +
-                "C1) Cola $1.25 - 5 in stock\n" +
+                "B1) Moonpie $1.80 - 5 in stock\n" +
+                "B2) Cowtales $1.50 - 5 in stock\n" +
                 "B3) Wonka Bar $1.50 - 5 in stock\n" +
                 "B4) Crunchie $1.75 - 5 in stock\n" +
-                "A1) Potato Crisps $3.05 - 5 in stock\n" +
+                "C1) Cola $1.25 - 5 in stock\n" +
+                "C2) Dr. Salt $1.50 - 5 in stock\n" +
                 "C3) Mountain Melter $1.50 - 5 in stock\n" +
-                "A3) Grain Waves $2.75 - 5 in stock\n" +
                 "C4) Heavy $1.50 - 5 in stock\n" +
-                "B1) Moonpie $1.80 - 5 in stock\n" +
+                "D1) U-Chews $0.85 - 5 in stock\n" +
+                "D2) Little League Chew $0.95 - 5 in stock\n" +
+                "D3) Chiclets $0.75 - 5 in stock\n" +
+                "D4) Triplemint $0.75 - 5 in stock\n" +
                 "\n" +
                 "Press enter to continue \u001B[H\u001B[2J\n" +
                 "\u001B[H\u001B[2J\n" +
@@ -97,6 +97,8 @@ public class VendingMachineTest {
                 "Please make a selection: \u001B[H\u001B[2J\n" +
                 "\n" +
                 "Thank you for shopping with Umbrella Corp.";
+
+
     }
 
 }

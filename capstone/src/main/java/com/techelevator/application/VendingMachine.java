@@ -244,7 +244,7 @@ public class VendingMachine
         }catch (AmountLessThanOneException ex) {
             System.out.println(ex.getMessage());
         } catch (Exception ex) {
-            System.out.println("\nPlease enter a whole dollar amount only");
+            System.out.println("Please enter a whole dollar amount only");
         }
         // show current money provided
         UserOutput.displayMoneyInMachine(currencyController);
