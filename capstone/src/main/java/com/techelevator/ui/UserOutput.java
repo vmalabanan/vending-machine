@@ -3,6 +3,7 @@ package com.techelevator.ui;
 import com.techelevator.models.CurrencyController;
 import com.techelevator.models.Inventory;
 import com.techelevator.models.products.Product;
+import com.techelevator.ui.asciiArt.Umbrella;
 import com.techelevator.view.Console;
 
 import java.math.BigDecimal;
@@ -15,9 +16,12 @@ public class UserOutput {
     public static void displayWelcomeScreen() {
         System.out.println();
         System.out.println("**********************");
-        System.out.println("Welcome to my vending machine!");
+        System.out.println("Welcome to my totally normal");
+        System.out.println("non-criminal vending machine!");
         System.out.println("**********************");
+        Umbrella.printUmbrella();
     }
+
 
     public static void displayHomeScreenMenu() {
         System.out.println();
