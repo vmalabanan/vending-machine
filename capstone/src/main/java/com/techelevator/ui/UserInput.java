@@ -35,7 +35,7 @@ public class UserInput {
     }
 
     public static String getUserItemId(){
-        System.out.print("\nEnter the (case-sensitive) ID of the item you wish to buy: ");
+        System.out.print("\nEnter the ID of the item you wish to buy: ");
 
         return input.nextLine();
     }
