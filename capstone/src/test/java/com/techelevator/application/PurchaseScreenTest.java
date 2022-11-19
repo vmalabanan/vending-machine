@@ -4,10 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
+import java.io.*;
+
 
 import static org.junit.Assert.*;
 
@@ -25,7 +23,7 @@ public class PurchaseScreenTest {
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() throws IOException {
         System.setOut(standardOut);
         System.setIn(standardIn);
     }
@@ -33,7 +31,9 @@ public class PurchaseScreenTest {
     @Test
     public void purchase_should_display_feedMoney_screen_if_option_equals_1() {
         //Arrange
+
         ByteArrayInputStream in = new ByteArrayInputStream("1\n10\nN\n3\n\n".getBytes());
+
         System.setIn(in);
         String expected = purchase_screen_option_1();
 
@@ -48,6 +48,7 @@ public class PurchaseScreenTest {
         assertEquals("Because the Feed Money screen should display if you select option 1", expected, actual);
 
     }
+
 
     @Test
     public void purchase_should_display_purchase_product_screen_if_option_equals_2() {
