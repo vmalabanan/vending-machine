@@ -11,7 +11,6 @@ import com.techelevator.models.file_io.SalesReportPrinter;
 import com.techelevator.models.products.Product;
 import com.techelevator.ui.UserInput;
 import com.techelevator.ui.UserOutput;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -172,7 +171,6 @@ public class VendingMachine
                 // break if they want to return to prev screen
                 if (choice.equalsIgnoreCase("n")) break;
 
-
             }
             // Finish transaction
             else if(option.equals("3"))
@@ -241,6 +239,9 @@ public class VendingMachine
         // clear screen
         UserOutput.clearScreen();
 
+        // print money stack graphic
+        UserOutput.printMoneyStack();
+
         // display money in machine
         UserOutput.displayMoneyInMachine(currencyController);
 
@@ -263,7 +264,6 @@ public class VendingMachine
     }
 
     public boolean purchaseItem(Product product){
-        // Charge customer the cost of the item
         BigDecimal price = product.getPrice();
 
         boolean hasInsufficientFunds = currencyController.getMoneyInMachine().compareTo(price) < 0;

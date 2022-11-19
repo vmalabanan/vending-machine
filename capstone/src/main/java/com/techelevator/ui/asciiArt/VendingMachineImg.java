@@ -2,7 +2,7 @@ package com.techelevator.ui.asciiArt;
 
 import com.techelevator.view.Colors;
 
-public class VendingMachineArt {
+public class VendingMachineImg {
     public static void printVendingMachineArt() {
         System.out.println(" _____________________________________");
         System.out.println("|                                     |");

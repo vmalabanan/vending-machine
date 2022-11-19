@@ -1,4 +1,4 @@
-Potato Crisps|3
+Potato Crisps|7
 Stackers|1
 Grain Waves|0
 Cloud Popcorn|0
@@ -15,4 +15,4 @@ Little League Chew|1
 Chiclets|1
 Triplemint|5
 
-**TOTAL SALES** $22.35
+**TOTAL SALES** $34.55
