@@ -89,7 +89,7 @@ public class UserOutput {
         else if (product.getType().equalsIgnoreCase("drink")) message += "Glug Glug, Yum!";
         else message += "Chew Chew, Yum!";
 
-//        System.out.println(message);
+        System.out.println(message);
     }
 
     public static void dispenseChange(CurrencyController currencyController) {

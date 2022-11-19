@@ -15,7 +15,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class SalesReportPrinter {
+public class
+SalesReportPrinter {
 
     private static final String FILE_EXTENSION = ".txt";
     private static final String FILE_TYPE = "TotalSalesReport";
