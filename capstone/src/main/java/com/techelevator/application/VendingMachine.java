@@ -11,13 +11,11 @@ import com.techelevator.models.file_io.SalesReportPrinter;
 import com.techelevator.models.products.Product;
 import com.techelevator.ui.UserInput;
 import com.techelevator.ui.UserOutput;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public class VendingMachine
 {
-
     private Inventory inventory = new Inventory();
     private CurrencyController currencyController = new CurrencyController();
     private Logger logger = new Logger("data");
@@ -45,49 +43,50 @@ public class VendingMachine
     }
 
     public void mainMenu() {
-        while(true)
+        String option = "";
+        while(!option.equals("3"))
         {
             // clear screen
             UserOutput.clearScreen();
 
+            // display menu
             UserOutput.displayHomeScreenMenu();
-            String option = UserInput.getSelection();
+
+            // get user input
+            option = UserInput.getSelection();
 
             // clear screen
             UserOutput.clearScreen();
 
-            if(option.equals("1"))
-            {
+            mainMenuMakeChoice(option);
+
+        }
+    }
+
+    public void mainMenuMakeChoice(String option) {
+        switch(option) {
+            case "1":
                 // display inventory
                 displayInventoryScreen();
-
-            }
-            else if(option.equals("2"))
-            {
-                // make purchase
-                purchase();
-
-            }
-            else if(option.equals("3"))
-            {
+                break;
+            case "2":
+                // make purchaseMenu
+                purchaseMenu();
+                break;
+            case "3":
                 // say goodbye to the user
                 UserOutput.goodbye();
-                // break to exit the application
                 break;
-            }
-            else if(option.equals("4")) {
+            case "4":
+                // print sales report
                 salesReportPrinter.printReport();
-
-            }
-            else
-            {
-
+                break;
+            default:
                 // invalid option try again
                 UserOutput.invalidSelection();
-
                 // prompt user to press enter to continue
                 UserInput.pressEnterToContinuePrompt();
-            }
+                break;
         }
     }
 
@@ -101,7 +100,7 @@ public class VendingMachine
         UserOutput.clearScreen();
     }
 
-    public void purchase(){
+    public void purchaseMenu(){
         boolean keepLooping = true;
 
         while (keepLooping) {
@@ -117,118 +116,131 @@ public class VendingMachine
             // get user input
             String option = UserInput.getSelection();
 
-            while (true) {
-
-                // Feed Money
-                if(option.equals("1"))
-                {
-                    // display feedMoneyScreen
-                    feedMoneyScreen();
-
-                    // prompt user if they want to add more money or return to previous screen
-                    String choice = UserInput.addMoreMoneyPrompt();
-
-                    // break if they want to return to prev screen
-                    if (choice.equalsIgnoreCase("n")) break;
-
-                }
-                // Purchase product
-                else if(option.equals("2"))
-                {
-                    // clear screen
-                    UserOutput.clearScreen();
-
-                    // display inventory
-                    UserOutput.displayInventory(inventory);
-
-                    // show current money provided
-                    UserOutput.displayMoneyInMachine(currencyController);
-
-                    // if there's no money in machine, display no money message
-                    if (currencyController.getMoneyInMachine().compareTo(BigDecimal.ZERO) <= 0) {
-                        UserInput.noMoneyInMachineMessage();
-                        break;
-                    }
-
-                    // get user input
-                    String id = UserInput.getUserItemId();
-
-                    try {
-                        if (!inventory.isIDValid(id)) throw new InvalidIDException();
-                        Product product = inventory.getProductByID(id);
-
-                        // attempt to make purchase
-                        boolean wasPurchaseSuccessful = purchaseItem(product);
-
-                        // if purchase was successful, output vending machine success message
-                        if(wasPurchaseSuccessful) {
-                            UserOutput.vendingMachineSuccessMessage(product);
-
-                            // Logs the purchase in the transaction logger
-                            logger.logMessage((product.getName() + product.getId()) , product.getPrice(), currencyController.getMoneyInMachine());
-
-                            // Logs the purchase in the Sales Report
-                            salesReportPrinter.logSale(product);
-                        }
-
-                    } catch (InvalidIDException ex) {
-                        System.out.println("\nThe ID you entered is invalid");
-                    } finally {
-                        // show current money provided
-                        UserOutput.displayMoneyInMachine(currencyController);
-
-                        // if money in machine <= 0, break
-                        if (currencyController.getMoneyInMachine().compareTo(BigDecimal.ZERO) <= 0) break;
-
-                        String choice = UserInput.buyAnotherItemPrompt();
-
-                        // break if they want to return to prev screen
-                        if (choice.equalsIgnoreCase("n")) break;
-                    }
-
-                }
-                // Finish transaction
-                else if(option.equals("3"))
-                {
-                    // clear screen
-                    UserOutput.clearScreen();
-
-                    // Logs the purchase
-                    logger.logMessage("DISPENSE CHANGE" , currencyController.getMoneyInMachine(), new BigDecimal(BigInteger.ZERO));
-
-                    // dispense change to the user
-                    UserOutput.dispenseChange(currencyController);
-
-                    // prompt user to press enter to continue
-                    UserInput.pressEnterToContinuePrompt();
-
-                    // set keepLooping to false
-                    keepLooping = false;
-
-                    break;
-
-                }
-                else
-                {
-                    // invalid option try again
-                    UserOutput.invalidSelection();
-
-                    // prompt user to press enter to continue
-                    UserInput.pressEnterToContinuePrompt();
-
-                    // break
-                    break;
-
-                }
-            }
+            keepLooping = purchaseMenuMakeChoice(option);
 
         }
 
     }
 
+    public boolean purchaseMenuMakeChoice(String option) {
+        while (true) {
+            // Feed Money
+            if(option.equals("1")) {
+
+                // display feedMoneyScreen
+                feedMoneyScreen();
+
+                // prompt user if they want to add more money or return to previous screen
+                String choice = UserInput.addMoreMoneyPrompt();
+
+                // break if they want to return to prev screen
+                if (choice.equalsIgnoreCase("n")) break;
+            }
+
+            // Purchase product
+             else if(option.equals("2"))
+            {
+                // clear screen
+                UserOutput.clearScreen();
+
+                // display inventory
+                UserOutput.displayInventory(inventory);
+
+                // show current money provided
+                UserOutput.displayMoneyInMachine(currencyController);
+
+                // if there's no money in machine, display no money message
+                if (currencyController.getMoneyInMachine().compareTo(BigDecimal.ZERO) <= 0) {
+                    UserInput.noMoneyInMachineMessage();
+                    break;
+                }
+
+                // get user input
+                String id = UserInput.getUserItemId();
+
+                validateAndMakePurchase(id);
+
+                // show current money provided
+                UserOutput.displayMoneyInMachine(currencyController);
+
+                // if money in machine <= 0, break
+                if (currencyController.getMoneyInMachine().compareTo(BigDecimal.ZERO) <= 0) break;
+
+                String choice = UserInput.buyAnotherItemPrompt();
+
+                // break if they want to return to prev screen
+                if (choice.equalsIgnoreCase("n")) break;
+
+            }
+            // Finish transaction
+            else if(option.equals("3"))
+            {
+                finishTransaction();
+
+               return false;
+
+            }
+            else
+            {
+                // invalid option try again
+                UserOutput.invalidSelection();
+
+                // prompt user to press enter to continue
+                UserInput.pressEnterToContinuePrompt();
+
+                // break
+                break;
+
+            }
+        }
+        return true;
+
+    }
+
+    public void finishTransaction() {
+        // clear screen
+        UserOutput.clearScreen();
+
+        // Logs the purchaseMenu
+        logger.logMessage("DISPENSE CHANGE" , currencyController.getMoneyInMachine(), new BigDecimal(BigInteger.ZERO));
+
+        // dispense change to the user
+        UserOutput.dispenseChange(currencyController);
+
+        // prompt user to press enter to continue
+        UserInput.pressEnterToContinuePrompt();
+    }
+
+    public void validateAndMakePurchase(String id) {
+        try {
+            if (!inventory.isIDValid(id)) throw new InvalidIDException();
+            Product product = inventory.getProductByID(id);
+
+            // attempt to make purchaseMenu
+            boolean wasPurchaseSuccessful = purchaseItem(product);
+
+            // if purchaseMenu was successful, output vending machine success message
+            if(wasPurchaseSuccessful) {
+                UserOutput.vendingMachineSuccessMessage(product);
+
+                // Logs the purchaseMenu in the transaction logger
+                logger.logMessage((product.getName() + product.getId()) , product.getPrice(), currencyController.getMoneyInMachine());
+
+                // Logs the purchaseMenu in the Sales Report
+                salesReportPrinter.logSale(product);
+            }
+
+        } catch (InvalidIDException ex) {
+            System.out.println("\nThe ID you entered is invalid");
+        }
+    }
+
     private void feedMoneyScreen() {
         // clear screen
         UserOutput.clearScreen();
+
+        // print money stack graphic
+        UserOutput.printMoneyStack();
 
         // display money in machine
         UserOutput.displayMoneyInMachine(currencyController);
@@ -252,7 +264,6 @@ public class VendingMachine
     }
 
     public boolean purchaseItem(Product product){
-        // Charge customer the cost of the item
         BigDecimal price = product.getPrice();
 
         boolean hasInsufficientFunds = currencyController.getMoneyInMachine().compareTo(price) < 0;
@@ -271,9 +282,9 @@ public class VendingMachine
             else if (hasInsufficientFunds) throw new InsufficientFundsException();
             else throw new SoldOutException();
         } catch (InsufficientFundsException ex) {
-            System.out.println("\nYou have insufficient funds for this purchase");
+            System.out.println("\nYou have insufficient funds for this purchaseMenu");
         } catch (SoldOutException ex) {
-            System.out.println("\nThat item is sold out and unavailable for purchase");
+            System.out.println("\nThat item is sold out and unavailable for purchaseMenu");
         }
 
         return false;

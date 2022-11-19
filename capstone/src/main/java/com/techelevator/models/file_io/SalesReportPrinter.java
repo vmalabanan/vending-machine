@@ -18,7 +18,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class SalesReportPrinter {
+public class
+SalesReportPrinter {
 
     private static final String FILE_EXTENSION = ".txt";
     private static final String FILE_TYPE = "TotalSalesReport";
@@ -66,7 +67,7 @@ public class SalesReportPrinter {
                     line = products[0] + "|" + (products[1]);
                 }
 
-                // Searches the document for the total and updates it with the price of the purchase
+                // Searches the document for the total and updates it with the price of the purchaseMenu
                  else if (line.contains("TOTAL SALES")){
                     String[] totalSales = line.split("\\$");
                     BigDecimal sales = new BigDecimal(totalSales[1]);

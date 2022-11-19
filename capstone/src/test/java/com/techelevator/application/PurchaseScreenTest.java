@@ -38,7 +38,7 @@ public class PurchaseScreenTest {
         String expected = purchase_screen_option_1();
 
         //Act
-        vendingMachine.purchase();
+        vendingMachine.purchaseMenu();
         String actual = outputStreamCaptor.toString().trim();
 
         expected = removeWhiteSpace(expected);
@@ -58,7 +58,7 @@ public class PurchaseScreenTest {
         String expected = purchase_screen_option_2();
 
         //Act
-        vendingMachine.purchase();
+        vendingMachine.purchaseMenu();
         String actual = outputStreamCaptor.toString().trim();
 
         expected = removeWhiteSpace(expected);
@@ -77,7 +77,7 @@ public class PurchaseScreenTest {
         String expected = purchase_screen_option_3();
 
         //Act
-        vendingMachine.purchase();
+        vendingMachine.purchaseMenu();
         String actual = outputStreamCaptor.toString().trim();
 
         expected = removeWhiteSpace(expected);
@@ -96,7 +96,7 @@ public class PurchaseScreenTest {
         String expected = purchase_screen_option_error();
 
         //Act
-        vendingMachine.purchase();
+        vendingMachine.purchaseMenu();
         String actual = outputStreamCaptor.toString().trim();
 
         expected = removeWhiteSpace(expected);

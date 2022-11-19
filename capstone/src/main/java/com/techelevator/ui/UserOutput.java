@@ -3,14 +3,12 @@ package com.techelevator.ui;
 import com.techelevator.models.CurrencyController;
 import com.techelevator.models.Inventory;
 import com.techelevator.models.products.Product;
-import com.techelevator.ui.asciiArt.Umbrella;
-import com.techelevator.ui.asciiArt.UmbrellaCorpLogo;
-import com.techelevator.ui.asciiArt.VendingMachineArt;
+import com.techelevator.ui.asciiArt.*;
+import com.techelevator.view.Colors;
 import com.techelevator.view.Console;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
-import java.util.Map;
 
 public class UserOutput {
     //Formatting price as a local currency number
@@ -28,7 +26,7 @@ public class UserOutput {
 
 
     public static void displayHomeScreenMenu() {
-        VendingMachineArt.printVendingMachineArtWithColor();
+        VendingMachineImg.printVendingMachineArtWithColor();
         System.out.println();
         System.out.println("**********************");
         System.out.println("Home");
@@ -76,9 +74,9 @@ public class UserOutput {
         System.out.println("3) Finish Transaction");
     }
 
-    public static void displayFeedMoneyScreen(CurrencyController currencyController) {
-        displayMoneyInMachine(currencyController);
-    }
+//    public static void displayFeedMoneyScreen(CurrencyController currencyController) {
+//        displayMoneyInMachine(currencyController);
+//    }
 
     public static void clearScreen() {
         System.out.println(Console.CLEAR_SCREEN);
@@ -86,7 +84,7 @@ public class UserOutput {
 
     public static void vendingMachineSuccessMessage(Product product) {
         String message = "\n";
-        if (product.getType().equalsIgnoreCase("chip")) message += "Crunch Crunch, Yum!";
+        if (product.getType().equalsIgnoreCase("chip")) VendingMachineSuccessMessages.printVendingMachineSuccessMessageChips();
         else if (product.getType().equalsIgnoreCase("candy")) message += "Munch Munch, Yum!";
         else if (product.getType().equalsIgnoreCase("drink")) message += "Glug Glug, Yum!";
         else message += "Chew Chew, Yum!";
@@ -99,14 +97,21 @@ public class UserOutput {
 
         // dispense change only if there is money in the machine
         if (currencyController.getMoneyInMachine().compareTo(BigDecimal.ZERO) > 0) {
+            MoneyStack.printMoneyStackWithColor();
             System.out.println("\nHere's your change!");
             System.out.println(currencyController.dispenseChange());
             System.out.println("------------\n" + "Total change: " + money);
         }
     }
+    public static void printMoneyStack() {
+        MoneyStack.printMoneyStackWithColor();
+    }
 
     public static void goodbye() {
-        System.out.println("\nThank you for shopping with Umbrella Corp.");
+        HandWave.printHandWave();
+        System.out.println();
+        System.out.println("\nThank you for shopping with Umbrella Corporation.");
+        System.out.println(Colors.RED + "\"Our Business Is Life Itself.\"" + Colors.RESET);
     }
 
     public static void invalidSelection() {

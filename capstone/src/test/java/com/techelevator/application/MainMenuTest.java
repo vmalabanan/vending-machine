@@ -67,7 +67,7 @@ public class MainMenuTest {
         actual = removeWhiteSpace(actual);
 
         //Assert
-        assertEquals("Because the purchase screen should display if you select option 2", expected, actual);
+        assertEquals("Because the purchaseMenu screen should display if you select option 2", expected, actual);
 
     }
 

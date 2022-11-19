@@ -90,7 +90,7 @@ public class CurrencyControllerTest {
     public void subtractMoney_ShouldPrint_InsufficientFunds_OnZeroInMachine() throws InsufficientFundsException {
 
         //Arrange
-        String expected = "You have insufficient funds for this purchase";
+        String expected = "You have insufficient funds for this purchaseMenu";
         BigDecimal price = new BigDecimal(10);
 
         //Act
@@ -106,7 +106,7 @@ public class CurrencyControllerTest {
     public void subtractMoney_ShouldPrint_InsufficientFunds_WhenPriceExceedsAvailableMoney() throws InsufficientFundsException, AmountLessThanOneException {
 
         //Arrange
-        String expected = "You have insufficient funds for this purchase";
+        String expected = "You have insufficient funds for this purchaseMenu";
         currencyController.addMoneyToMachine("5");
         BigDecimal price = new BigDecimal(10);
 
