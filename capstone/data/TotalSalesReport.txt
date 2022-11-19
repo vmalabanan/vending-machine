@@ -11,8 +11,8 @@ Dr. Salt|1
 Mountain Melter|0
 Heavy|0
 U-Chews|0
-Little League Chew|0
+Little League Chew|1
 Chiclets|1
-Triplemint|0
+Triplemint|5
 
-**TOTAL SALES** $17.65
+**TOTAL SALES** $22.35

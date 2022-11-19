@@ -1,6 +1,4 @@
 package com.techelevator.ui;
-
-import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class UserInput {
@@ -12,7 +10,7 @@ public class UserInput {
         return input.nextLine();
     }
 
-    // TO DO - FINISH getPayment FUNCTION
+
     public static String getPayment() {
 
         System.out.print("Please enter the dollar amount you wish to add: $");

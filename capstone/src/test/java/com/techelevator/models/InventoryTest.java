@@ -47,7 +47,7 @@ public class InventoryTest {
     public void decrementQuantity_ShouldPrint_SoldOut_WhenValueIsZero() throws SoldOutException {
 
         //Arrange
-        String expected = "That item is sold out and unavailable for purchase";
+        String expected = "That item is sold out and unavailable for purchaseMenu";
 
         //Act
         for (int i = 0; i < 6; i++) {
