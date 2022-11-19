@@ -5,6 +5,7 @@ import com.techelevator.models.Inventory;
 import com.techelevator.models.products.Product;
 import com.techelevator.ui.asciiArt.Umbrella;
 import com.techelevator.ui.asciiArt.UmbrellaCorpLogo;
+import com.techelevator.ui.asciiArt.VendingMachineArt;
 import com.techelevator.view.Console;
 
 import java.math.BigDecimal;
@@ -27,6 +28,7 @@ public class UserOutput {
 
 
     public static void displayHomeScreenMenu() {
+        VendingMachineArt.printVendingMachineArtWithColor();
         System.out.println();
         System.out.println("**********************");
         System.out.println("Home");
