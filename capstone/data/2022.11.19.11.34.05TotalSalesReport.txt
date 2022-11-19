@@ -12,9 +12,9 @@ Mountain Melter|0
 Heavy|0
 U-Chews|0
 Little League Chew|1
-Chiclets|2
+Chiclets|1
 Triplemint|5
 
 
-**TOTAL SALES** $29.00
+**TOTAL SALES** $28.25
 
