@@ -41,7 +41,7 @@ public class UserInput {
     }
 
     public static void pressEnterToContinuePrompt() {
-        System.out.print("\nPress enter to continue ");
+        System.out.println("\nPress enter to continue ");
 
         input.nextLine();
     }
