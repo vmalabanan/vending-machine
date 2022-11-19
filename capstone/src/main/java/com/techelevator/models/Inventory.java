@@ -13,7 +13,7 @@ public class Inventory {
 
     // Properties
     private Map<Product, Integer> inventory;
-    List<Product> organizedProducts;
+    static List<Product> organizedProducts;
 
 
     // Constructor
@@ -59,7 +59,7 @@ public class Inventory {
         return inventory;
     }
 
-    public List<Product> getOrganizedProducts() { return organizedProducts; }
+    public static List<Product> getOrganizedProducts() { return organizedProducts; }
 
     public void decrementQuantity(Product product) throws SoldOutException {
         int quantity = inventory.get(product);

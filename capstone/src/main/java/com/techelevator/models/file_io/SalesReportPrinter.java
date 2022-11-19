@@ -1,5 +1,7 @@
 package com.techelevator.models.file_io;
 
+import com.techelevator.application.VendingMachine;
+import com.techelevator.models.Inventory;
 import com.techelevator.models.products.Product;
 
 import java.io.File;
@@ -11,11 +13,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class
@@ -29,7 +28,12 @@ SalesReportPrinter {
 
     //Constructor
     public SalesReportPrinter(String directory){
+
         this.directory = directory;
+
+        if (!checkReportExists()){
+            generateNewReport();
+        }
     }
 
     public void logSale(Product product){
@@ -107,6 +111,40 @@ SalesReportPrinter {
             Files.copy(original, copy);
         } catch (Exception ex) {
             System.out.println("Could not create print file");
+        }
+
+    }
+
+    // Checks if the total sales report exists
+    public boolean checkReportExists(){
+        String salesFilePath = directory + "/" + FILE_TYPE + FILE_EXTENSION;
+        return Files.exists(Path.of(salesFilePath));
+    }
+
+    // Generates an empty sales report
+    public void generateNewReport(){
+
+        String salesFilePath = directory + "/" + FILE_TYPE + FILE_EXTENSION;
+        File writeFile = new File(salesFilePath);
+
+        try (PrintWriter writer = new PrintWriter(writeFile)){
+
+            List<Product> inventory = Inventory.getOrganizedProducts();
+
+            for (Product product : inventory){
+
+                String name = product.getName();
+                String quantity = "0";
+
+                writer.println(name + "|" + quantity);
+            }
+
+            writer.println();
+            writer.println();
+            writer.println("**TOTAL SALES** $0.00");
+
+        } catch (Exception ex){
+            // Swallow exception
         }
 
     }

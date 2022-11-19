@@ -21,6 +21,7 @@ public class VendingMachine
     private Logger logger = new Logger("data");
     private SalesReportPrinter salesReportPrinter = new SalesReportPrinter("data");
 
+
         public void run()
     {
         // display a welcome screen
