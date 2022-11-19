@@ -23,9 +23,6 @@ public class VendingMachine
 
         public void run()
     {
-        // clear screen
-        UserOutput.clearScreen();
-
         // display a welcome screen
         welcome();
 
