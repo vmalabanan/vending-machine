@@ -10,7 +10,10 @@ import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -91,7 +94,7 @@ SalesReportPrinter {
     public void printReport() {
 
         // Timestamps the created file
-        String timeStamp = LocalDate.now().format(DateTimeFormatter.ISO_DATE);
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 
         // creates paths for files
         String readFilePath = directory + "/" + FILE_TYPE + FILE_EXTENSION;
