@@ -5,6 +5,7 @@ import com.techelevator.models.Inventory;
 import com.techelevator.models.products.Product;
 import com.techelevator.ui.asciiArt.Umbrella;
 import com.techelevator.ui.asciiArt.UmbrellaCorpLogo;
+import com.techelevator.ui.asciiArt.VendingMachineArt;
 import com.techelevator.view.Console;
 
 import java.math.BigDecimal;
@@ -20,12 +21,14 @@ public class UserOutput {
         System.out.println("Welcome to our totally normal");
         System.out.println("non-criminal vending machine!");
         System.out.println("*****************************");
-        Umbrella.printUmbrella();
+        Umbrella.printUmbrellaWithColor();
+        System.out.println();
         UmbrellaCorpLogo.printUmbrellaCorpLogo();
     }
 
 
     public static void displayHomeScreenMenu() {
+        VendingMachineArt.printVendingMachineArtWithColor();
         System.out.println();
         System.out.println("**********************");
         System.out.println("Home");
