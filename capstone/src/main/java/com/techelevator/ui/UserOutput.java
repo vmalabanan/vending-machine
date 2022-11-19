@@ -20,7 +20,8 @@ public class UserOutput {
         System.out.println("Welcome to our totally normal");
         System.out.println("non-criminal vending machine!");
         System.out.println("*****************************");
-        Umbrella.printUmbrella();
+        Umbrella.printUmbrellaWithColor();
+        System.out.println();
         UmbrellaCorpLogo.printUmbrellaCorpLogo();
     }
 
