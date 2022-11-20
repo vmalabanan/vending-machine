@@ -16,13 +16,13 @@ public class Gum {
     }
 
     public static void printGumWithColor() {
-        System.out.println("           " + Colors.BLACK + "__________________________________");
-        System.out.println("          " + Colors.CYAN_BACKGROUND + "/      ___  __  __ ___ ___        / \\" + Colors.RESET + Colors.BLACK);
-        System.out.println("         " + Colors.CYAN_BACKGROUND + "/     / __ `/ / / / __ `__ \\      /  /" + Colors.RESET + Colors.BLACK);
-        System.out.println("        " + Colors.CYAN_BACKGROUND + "/     / /_/ / /_/ / / / / / /     /  /" + Colors.RESET + Colors.BLACK);
-        System.out.println("       " + Colors.CYAN_BACKGROUND + "/      \\__, /\\__,_/_/ /_/ /_/     /  /" + Colors.RESET + Colors.BLACK);
-        System.out.println("      " + Colors.CYAN_BACKGROUND + "/      /____/                     /  /" + Colors.RESET + Colors.BLACK);
-        System.out.println("     " + Colors.CYAN_BACKGROUND + "/_________________________________/  /" + Colors.RESET + Colors.BLACK);
-        System.out.println("     " + Colors.CYAN_BACKGROUND + "\\__________________________________\\/" + Colors.RESET + Colors.BLACK + Colors.RESET);
+        System.out.println("\t\t      " + Colors.BLACK + "__________________________________");
+        System.out.println("\t\t     " + Colors.CYAN_BACKGROUND + "/      ___  __  __ ___ ___        / \\" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t    " + Colors.CYAN_BACKGROUND + "/     / __ `/ / / / __ `__ \\      /  /" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t   " + Colors.CYAN_BACKGROUND + "/     / /_/ / /_/ / / / / / /     /  /" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t  " + Colors.CYAN_BACKGROUND + "/      \\__, /\\__,_/_/ /_/ /_/     /  /" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t " + Colors.CYAN_BACKGROUND + "/      /____/                     /  /" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t" + Colors.CYAN_BACKGROUND + "/_________________________________/  /" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t" + Colors.CYAN_BACKGROUND + "\\__________________________________\\/" + Colors.RESET + Colors.BLACK + Colors.RESET);
       }
 }

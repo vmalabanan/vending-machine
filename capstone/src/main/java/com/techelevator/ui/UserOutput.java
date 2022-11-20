@@ -81,30 +81,32 @@ public class UserOutput {
 
     public static void vendingMachineSuccessMessage(Product product) {
         String price = currency.format(product.getPrice());
-        System.out.println("\nDispensing " + product.getName() + " - " + price + "...");
-        System.out.println();
+        System.out.print("\n\tDispensing " + product.getName() + " - " + price + "... ");
 
 
         if (product.getType().equalsIgnoreCase("chip")) {
+            System.out.print(Colors.YELLOW + "Crunch Crunch, Yum!" + Colors.RESET);
+            System.out.println();
             ChipBag.printChipBagWithColor();
             System.out.println();
-            System.out.println("\t\t\t " + Colors.YELLOW + "Crunch Crunch, Yum!" + Colors.RESET);
         }
         else if (product.getType().equalsIgnoreCase("candy")) {
             System.out.println("\t\t\tMunch Munch, Yum!");
         }
         else if (product.getType().equalsIgnoreCase("drink")) {
+            System.out.print(Colors.RED + "Glug Glug, Yum!" + Colors.RESET);
+            System.out.println("\n");
             Soda.printSodaWithColor();
-            System.out.println();
-            System.out.println("\t\t   " + Colors.RED + "Glug Glug, Yum!" + Colors.RESET);
             System.out.println();
 
         }
         else {
+            System.out.print(Colors.PURPLE + "Chew Chew, Yum!" + Colors.RESET);
+            System.out.println();
             Gum.printGumWithColor();
             System.out.println();
 //            VendingMachineSuccessMessages.printVendingMachineSuccessMessageGum();
-            System.out.println("\t\t\t\t" + Colors.PURPLE + "Chew Chew, Yum!" + Colors.RESET);
+
         }
 
     }

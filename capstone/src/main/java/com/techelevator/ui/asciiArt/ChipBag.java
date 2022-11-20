@@ -21,20 +21,20 @@ public class ChipBag {
 
     }
     public static void printChipBagWithColor() {
-        System.out.println("            " + Colors.BLACK + "____________________" + Colors.RESET + Colors.BLACK);
-        System.out.println("            "  + Colors.YELLOW_BACKGROUND + "[--------------------]" + Colors.RESET + Colors.BLACK);
-        System.out.println("            "  + Colors.YELLOW_BACKGROUND + "|                    |" + Colors.RESET + Colors.BLACK);
-        System.out.println("            "  + Colors.YELLOW_BACKGROUND + "|,,,,,,,,,,,,,,,,,,,,|" + Colors.RESET + Colors.BLACK);
-        System.out.println("            "  + Colors.YELLOW_BACKGROUND + "|" + Colors.RED + "    _    _          " + Colors.BLACK + "|" + Colors.RESET + Colors.BLACK);
-        System.out.println("            "  + Colors.YELLOW_BACKGROUND + "|" + Colors.RED + " __| |_ (_)_ __ ___ " + Colors.BLACK + "|" + Colors.RESET + Colors.BLACK);
-        System.out.println("            "  + Colors.YELLOW_BACKGROUND + "|" + Colors.RED + "/ _| ' \\| | '_ (_-< " + Colors.BLACK + "|" + Colors.RESET + Colors.BLACK);
-        System.out.println("            "  + Colors.YELLOW_BACKGROUND + "|" + Colors.RED + "\\__|_||_|_| .__/__/ " + Colors.BLACK + "|" + Colors.RESET + Colors.BLACK);
-        System.out.println("            "  + Colors.YELLOW_BACKGROUND + "|" + Colors.RED + "          |_|       " + Colors.BLACK + "|" + Colors.RESET + Colors.BLACK);
-        System.out.println("            "  + Colors.YELLOW_BACKGROUND + "|,,,,,,,,,,,,,,,,,,,,|" + Colors.RESET + Colors.BLACK);
-        System.out.println("            "  + Colors.YELLOW_BACKGROUND + "|                    |" + Colors.RESET + Colors.BLACK);
-        System.out.println("            "  + Colors.YELLOW_BACKGROUND + "|                    |" + Colors.RESET + Colors.BLACK);
-        System.out.println("            "  + Colors.YELLOW_BACKGROUND + "|____________________|" + Colors.RESET + Colors.BLACK);
-        System.out.println("            "  + Colors.YELLOW_BACKGROUND + "[|||||||||||||||||||||" + Colors.RESET);
+        System.out.println("\t\t\t" + Colors.BLACK + "____________________" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t\t"  + Colors.YELLOW_BACKGROUND + "[--------------------]" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t\t"  + Colors.YELLOW_BACKGROUND + "|                    |" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t\t"  + Colors.YELLOW_BACKGROUND + "|,,,,,,,,,,,,,,,,,,,,|" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t\t"  + Colors.YELLOW_BACKGROUND + "|" + Colors.RED + "    _    _          " + Colors.BLACK + "|" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t\t"  + Colors.YELLOW_BACKGROUND + "|" + Colors.RED + " __| |_ (_)_ __ ___ " + Colors.BLACK + "|" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t\t"  + Colors.YELLOW_BACKGROUND + "|" + Colors.RED + "/ _| ' \\| | '_ (_-< " + Colors.BLACK + "|" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t\t"  + Colors.YELLOW_BACKGROUND + "|" + Colors.RED + "\\__|_||_|_| .__/__/ " + Colors.BLACK + "|" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t\t"  + Colors.YELLOW_BACKGROUND + "|" + Colors.RED + "          |_|       " + Colors.BLACK + "|" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t\t"  + Colors.YELLOW_BACKGROUND + "|,,,,,,,,,,,,,,,,,,,,|" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t\t"  + Colors.YELLOW_BACKGROUND + "|                    |" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t\t"  + Colors.YELLOW_BACKGROUND + "|                    |" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t\t"  + Colors.YELLOW_BACKGROUND + "|____________________|" + Colors.RESET + Colors.BLACK);
+        System.out.println("\t\t\t"  + Colors.YELLOW_BACKGROUND + "[|||||||||||||||||||||" + Colors.RESET);
 
     }
 }
