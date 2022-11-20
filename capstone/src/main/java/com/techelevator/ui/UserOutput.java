@@ -2,6 +2,7 @@ package com.techelevator.ui;
 
 import com.techelevator.models.CurrencyController;
 import com.techelevator.models.Inventory;
+import com.techelevator.models.exceptions.SoldOutException;
 import com.techelevator.models.products.Product;
 import com.techelevator.ui.asciiArt.*;
 import com.techelevator.view.Colors;
@@ -74,26 +75,38 @@ public class UserOutput {
         System.out.println("3) Finish Transaction");
     }
 
-//    public static void displayFeedMoneyScreen(CurrencyController currencyController) {
-//        displayMoneyInMachine(currencyController);
-//    }
-
     public static void clearScreen() {
         System.out.println(Console.CLEAR_SCREEN);
     }
 
     public static void vendingMachineSuccessMessage(Product product) {
-        String message = "\n";
-        if (product.getType().equalsIgnoreCase("chip")) {
-            ChipBag.printChipBag();
-            System.out.println();
-            VendingMachineSuccessMessages.printVendingMachineSuccessMessageChips();
-        }
-        else if (product.getType().equalsIgnoreCase("candy")) message += "Munch Munch, Yum!";
-        else if (product.getType().equalsIgnoreCase("drink")) message += "Glug Glug, Yum!";
-        else message += "Chew Chew, Yum!";
+        String price = currency.format(product.getPrice());
+        System.out.println("\nDispensing " + product.getName() + " - " + price + "...");
+        System.out.println();
 
-        System.out.println(message);
+
+        if (product.getType().equalsIgnoreCase("chip")) {
+            ChipBag.printChipBagWithColor();
+            System.out.println();
+            System.out.println("\t\t\t " + Colors.YELLOW + "Crunch Crunch, Yum!" + Colors.RESET);
+        }
+        else if (product.getType().equalsIgnoreCase("candy")) {
+            System.out.println("\t\t\tMunch Munch, Yum!");
+        }
+        else if (product.getType().equalsIgnoreCase("drink")) {
+            Soda.printSodaWithColor();
+            System.out.println();
+            System.out.println("\t\t   " + Colors.RED + "Glug Glug, Yum!" + Colors.RESET);
+            System.out.println();
+
+        }
+        else {
+            Gum.printGumWithColor();
+            System.out.println();
+//            VendingMachineSuccessMessages.printVendingMachineSuccessMessageGum();
+            System.out.println("\t\t\t\t" + Colors.PURPLE + "Chew Chew, Yum!" + Colors.RESET);
+        }
+
     }
 
     public static void dispenseChange(CurrencyController currencyController) {

@@ -30,25 +30,25 @@ public class Umbrella {
     }
 
     public static void printUmbrellaWithColor() {
-        System.out.println(Colors.BLACK + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@");
-        System.out.println("@@@@@@@@@@@@@@ " + Colors.RED + "," + Colors.RESET + " @@             @@ " + Colors.RED + "." + Colors.BLACK + " @@@@@@@@@@@@@");
-        System.out.println("@@@@@@@@@@@@  " + Colors.RED + "**," + Colors.RESET + " @@@@@@@@@@@@@@@ " + Colors.RED + "***" + Colors.BLACK + "  @@@@@@@@@@@");
-        System.out.println("@@@@@@@@@@  " + Colors.RED + "******" + Colors.RESET + " @@@@@@@@@@@@@" + Colors.RED + "******" + Colors.BLACK + "  @@@@@@@@@");
-        System.out.println("@@@@@@@@  " + Colors.RED + "*********" + Colors.RESET + " @@@@@@@@@@@ " + Colors.RED + "*********" + Colors.BLACK + " @@@@@@@");
-        System.out.println("@@@@&  " + Colors.RED + "*************" + Colors.RESET + " @@@@@@@@@ " + Colors.RED + "*************" + Colors.BLACK + "  @@@@");
-        System.out.println("@  " + Colors.RED + "******************" + Colors.RESET + " @@@@@@@ " + Colors.RED + "******************" + Colors.BLACK);
-        System.out.println("@"  + Colors.RESET + "@@@   "  + Colors.RED + "*************" + Colors.RESET + "@@@@@ " + Colors.RED + "*************" + Colors.RESET + "   @@@ %");
-        System.out.println(Colors.BLACK + "@@" + Colors.RESET + "@@@@@@@@@   " + Colors.RED + "********" + Colors.RESET + " @@@ "  + Colors.RED + "*******," + Colors.RESET + "   @@@@@@@@." + Colors.BLACK + " @");
-        System.out.println("@ " + Colors.RESET + "@@@@@@@@@@@@@@@@@ " + Colors.RED + ",**" + Colors.RESET + " @ " + Colors.RED + "**," + Colors.RESET + "   @@@@@@@@@@@@@@" + Colors.BLACK + " ,@");
-        System.out.println("@@%" + Colors.RESET + "@@@@@@@@@@@@@@@@@@@@ " + Colors.RED + "*" + Colors.RESET +" @@@@@@@@@@@@@@@@@@@@ " + Colors.BLACK + "@@");
-        System.out.println("@@" + Colors.RESET + ".@@@@@@@@@@@@@@   " + Colors.RED + "***" + Colors.RESET + " @ "  + Colors.RED + "***" + Colors.RESET + "   @@@@@@@@@@@@@@" + Colors.BLACK + " @@");
-        System.out.println("@@" + Colors.RESET + "@@@@@@@@&   " + Colors.RED + "********" + Colors.RESET + " @@@ " + Colors.RED + "********" + Colors.RESET + "   @@@@@@@@," + Colors.BLACK + " @");
-        System.out.println("@" + Colors.RESET + "%@@%   " + Colors.RED + "*************" + Colors.RESET + " @@@@@ " + Colors.RED + "*************" + Colors.RESET + "   @@@" + Colors.BLACK + " @");
-        System.out.println("@  " + Colors.RED + "******************" + Colors.RESET + " @@@@@@@ " + Colors.RED + "******************"  + Colors.BLACK );
-        System.out.println("@@@@@  " + Colors.RED + "*************" + Colors.RESET + " @@@@@@@@@ " + Colors.RED + "*************" + Colors.BLACK + "  @@@@");
-        System.out.println("@@@@@@@@  " + Colors.RED + "*********" + Colors.RESET + " @@@@@@@@@@@ " + Colors.RED + "*********" + Colors.BLACK + "  @@@@@@@");
-        System.out.println("@@@@@@@@@@( " + Colors.RED + "******" + Colors.RESET + " @@@@@@@@@@@@@ " + Colors.RED + "******" + Colors.BLACK + " @@@@@@@@@@");
-        System.out.println("@@@@@@@@@@@@  " + Colors.RED + "**," + Colors.RESET + " @@@@@@@@@@@@@@@ " + Colors.RED + "***" + Colors.BLACK + " (@@@@@@@@@@@");
-        System.out.println("@@@@@@@@@@@@@@ " + Colors.RED + "." + Colors.RESET + " @,             /@" + Colors.RED + "." + Colors.BLACK + "  @@@@@@@@@@@@@" + Colors.RESET);
+        System.out.println(Colors.BLACK + "       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@");
+        System.out.println("       @@@@@@@@@@@@@@ " + Colors.RED + "," + Colors.RESET + " @@             @@ " + Colors.RED + "." + Colors.BLACK + " @@@@@@@@@@@@@");
+        System.out.println("       @@@@@@@@@@@@  " + Colors.RED + "**," + Colors.RESET + " @@@@@@@@@@@@@@@ " + Colors.RED + "***" + Colors.BLACK + "  @@@@@@@@@@@");
+        System.out.println("       @@@@@@@@@@  " + Colors.RED + "******" + Colors.RESET + " @@@@@@@@@@@@@" + Colors.RED + "******" + Colors.BLACK + "  @@@@@@@@@@");
+        System.out.println("       @@@@@@@@  " + Colors.RED + "*********" + Colors.RESET + " @@@@@@@@@@@ " + Colors.RED + "*********" + Colors.BLACK + " @@@@@@@@");
+        System.out.println("       @@@@&  " + Colors.RED + "*************" + Colors.RESET + " @@@@@@@@@ " + Colors.RED + "*************" + Colors.BLACK + "  @@@@");
+        System.out.println("       @  " + Colors.RED + "******************" + Colors.RESET + " @@@@@@@ " + Colors.RED + "******************" + Colors.BLACK + "@@");
+        System.out.println("       @"  + Colors.RESET + "@@@   "  + Colors.RED + "*************" + Colors.RESET + "@@@@@ " + Colors.RED + "*************" + Colors.RESET + "   @@@ %" + Colors.BLACK + " @@");
+        System.out.println("       @@" + Colors.RESET + "@@@@@@@@@   " + Colors.RED + "********" + Colors.RESET + " @@@ "  + Colors.RED + "*******," + Colors.RESET + "   @@@@@@@@." + Colors.BLACK + " @@");
+        System.out.println("       @ " + Colors.RESET + "@@@@@@@@@@@@@@@@@ " + Colors.RED + ",**" + Colors.RESET + " @ " + Colors.RED + "**," + Colors.RESET + "   @@@@@@@@@@@@@@" + Colors.BLACK + " ,@@");
+        System.out.println("       @@%" + Colors.RESET + "@@@@@@@@@@@@@@@@@@@@ " + Colors.RED + "*" + Colors.RESET +" @@@@@@@@@@@@@@@@@@@@ " + Colors.BLACK + "@@@");
+        System.out.println("       @@" + Colors.RESET + ".@@@@@@@@@@@@@@   " + Colors.RED + "***" + Colors.RESET + " @ "  + Colors.RED + "***" + Colors.RESET + "   @@@@@@@@@@@@@@" + Colors.BLACK + " @@@");
+        System.out.println("       @@" + Colors.RESET + "@@@@@@@@&   " + Colors.RED + "********" + Colors.RESET + " @@@ " + Colors.RED + "********" + Colors.RESET + "   @@@@@@@@," + Colors.BLACK + " @@");
+        System.out.println("       @" + Colors.RESET + "%@@%   " + Colors.RED + "*************" + Colors.RESET + " @@@@@ " + Colors.RED + "*************" + Colors.RESET + "   @@@" + Colors.BLACK + " @@");
+        System.out.println("       @  " + Colors.RED + "******************" + Colors.RESET + " @@@@@@@ " + Colors.RED + "******************"  + Colors.BLACK + "@@");
+        System.out.println("       @@@@@  " + Colors.RED + "*************" + Colors.RESET + " @@@@@@@@@ " + Colors.RED + "*************" + Colors.BLACK + "  @@@@");
+        System.out.println("       @@@@@@@@  " + Colors.RED + "*********" + Colors.RESET + " @@@@@@@@@@@ " + Colors.RED + "*********" + Colors.BLACK + "  @@@@@@@");
+        System.out.println("       @@@@@@@@@@( " + Colors.RED + "******" + Colors.RESET + " @@@@@@@@@@@@@ " + Colors.RED + "******" + Colors.BLACK + " @@@@@@@@@@");
+        System.out.println("       @@@@@@@@@@@@  " + Colors.RED + "**," + Colors.RESET + " @@@@@@@@@@@@@@@ " + Colors.RED + "***" + Colors.BLACK + " (@@@@@@@@@@@");
+        System.out.println("       @@@@@@@@@@@@@@ " + Colors.RED + "." + Colors.RESET + " @,             /@" + Colors.RED + "." + Colors.BLACK + "  @@@@@@@@@@@@@" + Colors.RESET);
     }
 }
