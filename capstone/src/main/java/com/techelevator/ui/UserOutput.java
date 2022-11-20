@@ -47,7 +47,7 @@ public class UserOutput {
         System.out.println();
 
         // loop through and display products
-        for (Product product : inventory.getOrganizedProducts()) {
+        for (Product product : Inventory.getOrganizedProducts()) {
 
 
             String id = product.getId();
@@ -58,6 +58,28 @@ public class UserOutput {
 
             System.out.println(id + ") " + name + " " + price + " - " + displayQuantity);
         }
+
+    }
+
+    public static void displayInventoryAsGrid() {
+        System.out.println();
+        System.out.println("**********************");
+        System.out.println("Products");
+        System.out.println("**********************");
+        System.out.println();
+
+        String[] colors = new String[]{Colors.GREEN, Colors.CYAN, Colors.PURPLE, Colors.YELLOW};
+        int colorCount = 0;
+        for (int i = 0; i < Inventory.getOrganizedProducts().size(); i+=4) {
+            System.out.print(colors[colorCount]);
+            ProductGrid.printProductGridLine1();
+            ProductGrid.printProductGridLine2(Inventory.getOrganizedProducts().get(i), Inventory.getOrganizedProducts().get(i + 1), Inventory.getOrganizedProducts().get(i + 2), Inventory.getOrganizedProducts().get(i + 3));
+            ProductGrid.printProductGridLine3();
+            ProductGrid.printProductGridLine7();
+            System.out.println();
+            colorCount++;
+        }
+        System.out.print(Colors.RESET);
 
     }
 
@@ -91,7 +113,10 @@ public class UserOutput {
             System.out.println();
         }
         else if (product.getType().equalsIgnoreCase("candy")) {
-            System.out.println("\t\t\tMunch Munch, Yum!");
+            System.out.print(Colors.BLUE + "Munch Munch, Yum!" + Colors.RESET);
+            System.out.println("\n");
+            Candy.printCandyWithColor();
+            System.out.println();
         }
         else if (product.getType().equalsIgnoreCase("drink")) {
             System.out.print(Colors.RED + "Glug Glug, Yum!" + Colors.RESET);
@@ -105,7 +130,6 @@ public class UserOutput {
             System.out.println();
             Gum.printGumWithColor();
             System.out.println();
-//            VendingMachineSuccessMessages.printVendingMachineSuccessMessageGum();
 
         }
 

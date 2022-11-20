@@ -52,6 +52,8 @@ public class Soda {
         System.out.println("\t\t\t|                       |");
         System.out.println("\t\t\t|                       |");
         System.out.println("\t\t\t|                       |");
+        System.out.println("\t\t\t|                       |");
+        System.out.println("\t\t\t|                       |");
         System.out.println("\t\t\t\\                      /");
         System.out.println("\t\t\t \\                    /");
         System.out.println("\t\t\t  '._._.''._._.'._._.'");

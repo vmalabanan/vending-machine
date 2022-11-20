@@ -89,8 +89,8 @@ public class VendingMachine
     }
 
     public void displayInventoryScreen() {
-        UserOutput.displayInventory(inventory);
-
+//        UserOutput.displayInventory(inventory);
+        UserOutput.displayInventoryAsGrid();
         // prompt user to press enter to continue
         UserInput.pressEnterToContinuePrompt();
 
@@ -142,7 +142,8 @@ public class VendingMachine
                 UserOutput.clearScreen();
 
                 // display inventory
-                UserOutput.displayInventory(inventory);
+//                UserOutput.displayInventory(inventory);
+                UserOutput.displayInventoryAsGrid();
 
                 // show current money provided
                 UserOutput.displayMoneyInMachine(currencyController);
