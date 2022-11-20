@@ -84,7 +84,11 @@ public class UserOutput {
 
     public static void vendingMachineSuccessMessage(Product product) {
         String message = "\n";
-        if (product.getType().equalsIgnoreCase("chip")) VendingMachineSuccessMessages.printVendingMachineSuccessMessageChips();
+        if (product.getType().equalsIgnoreCase("chip")) {
+            ChipBag.printChipBag();
+            System.out.println();
+            VendingMachineSuccessMessages.printVendingMachineSuccessMessageChips();
+        }
         else if (product.getType().equalsIgnoreCase("candy")) message += "Munch Munch, Yum!";
         else if (product.getType().equalsIgnoreCase("drink")) message += "Glug Glug, Yum!";
         else message += "Chew Chew, Yum!";
