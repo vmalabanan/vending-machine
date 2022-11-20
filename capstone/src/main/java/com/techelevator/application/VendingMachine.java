@@ -89,8 +89,7 @@ public class VendingMachine
     }
 
     public void displayInventoryScreen() {
-//        UserOutput.displayInventory(inventory);
-        UserOutput.displayInventoryAsGrid();
+        UserOutput.displayInventoryAsGrid(inventory);
         // prompt user to press enter to continue
         UserInput.pressEnterToContinuePrompt();
 
@@ -142,8 +141,7 @@ public class VendingMachine
                 UserOutput.clearScreen();
 
                 // display inventory
-//                UserOutput.displayInventory(inventory);
-                UserOutput.displayInventoryAsGrid();
+                UserOutput.displayInventoryAsGrid(inventory);
 
                 // show current money provided
                 UserOutput.displayMoneyInMachine(currencyController);
@@ -156,6 +154,9 @@ public class VendingMachine
 
                 // get user input
                 String id = UserInput.getUserItemId();
+
+                // clear screen
+                UserOutput.clearScreen();
 
                 validateAndMakePurchase(id);
 
@@ -281,9 +282,9 @@ public class VendingMachine
             else if (hasInsufficientFunds) throw new InsufficientFundsException();
             else throw new SoldOutException();
         } catch (InsufficientFundsException ex) {
-            System.out.println("\nYou have insufficient funds for this purchaseMenu");
+            System.out.println("\nYou have insufficient funds for this purchase");
         } catch (SoldOutException ex) {
-            System.out.println("\nThat item is sold out and unavailable for purchaseMenu");
+            System.out.println("\nThat item is sold out and unavailable for purchase");
         }
 
         return false;

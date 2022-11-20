@@ -10,6 +10,8 @@ import com.techelevator.view.Console;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserOutput {
     //Formatting price as a local currency number
@@ -49,7 +51,6 @@ public class UserOutput {
         // loop through and display products
         for (Product product : Inventory.getOrganizedProducts()) {
 
-
             String id = product.getId();
             String name = product.getName();
             String price = currency.format(product.getPrice());
@@ -61,23 +62,22 @@ public class UserOutput {
 
     }
 
-    public static void displayInventoryAsGrid() {
+    public static void displayInventoryAsGrid(Inventory inventory) {
         System.out.println();
         System.out.println("**********************");
         System.out.println("Products");
         System.out.println("**********************");
         System.out.println();
 
+        // so each row has its own color
         String[] colors = new String[]{Colors.GREEN, Colors.CYAN, Colors.PURPLE, Colors.YELLOW};
         int colorCount = 0;
         for (int i = 0; i < Inventory.getOrganizedProducts().size(); i+=4) {
             System.out.print(colors[colorCount]);
-            ProductGrid.printProductGridLine1();
-            ProductGrid.printProductGridLine2(Inventory.getOrganizedProducts().get(i), Inventory.getOrganizedProducts().get(i + 1), Inventory.getOrganizedProducts().get(i + 2), Inventory.getOrganizedProducts().get(i + 3));
-            ProductGrid.printProductGridLine3();
-            ProductGrid.printProductGridLine7();
+            ProductGrid.printProductGrid(Inventory.getOrganizedProducts().get(i), Inventory.getOrganizedProducts().get(i + 1), Inventory.getOrganizedProducts().get(i + 2), Inventory.getOrganizedProducts().get(i + 3), inventory);
             System.out.println();
             colorCount++;
+
         }
         System.out.print(Colors.RESET);
 
