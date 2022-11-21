@@ -36,7 +36,7 @@ public class CurrencyController {
             moneyInMachine = moneyInMachine.subtract(price);
         }
         // otherwise throw exception
-        else throw new InsufficientFundsException();
+        else throw new InsufficientFundsException("\nYou have insufficient funds to purchase that item", moneyInMachine, price);
     }
 
     public String dispenseChange() {

@@ -68,7 +68,7 @@ public class Inventory {
             quantity--;
             inventory.put(product, quantity);
         } else {
-            throw new SoldOutException();
+            throw new SoldOutException("SOLD OUT", product);
         }
     }
 
@@ -93,7 +93,7 @@ public class Inventory {
                 return product.getKey();
             }
         }
-            throw new InvalidIDException();
+            throw new InvalidIDException("\nThe ID you have entered is invalid", id);
         } catch (InvalidIDException ex) {
             System.out.println("The ID you entered is invalid");
         }
