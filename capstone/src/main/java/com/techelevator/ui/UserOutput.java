@@ -161,5 +161,9 @@ public class UserOutput {
         System.out.println("\nInvalid selection. Please try again");
     }
 
+    public static void salesReportMessage() {
+        System.out.println("Generating sales report...");
+    }
+
 
 }
