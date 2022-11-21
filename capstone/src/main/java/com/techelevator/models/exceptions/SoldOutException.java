@@ -20,9 +20,9 @@ public class SoldOutException extends Exception {
         String message = super.getMessage();
         String productName = product.getName();
 
-        message += " --> Unfortunately " + productName + " are sold out at this machine\n";
-        message += "Umbrella corporation realizes that " + productName + " is a delicious snack\n free from cutting edge research chemicals\n";
-        message += "Please contact Umbrella Corporation at 555-555-1337 to re-stock this machine";
+        message += " --> Unfortunately " + productName + " are sold out at this machine.\n";
+        message += "\nUmbrella corporation realizes that " + productName + " is a delicious snack\nfree from cutting edge research chemicals.\n";
+        message += "\nPlease contact Umbrella Corporation at 555-555-1337 to re-stock this machine.";
 
         return message;
     }

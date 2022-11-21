@@ -27,9 +27,12 @@ public class UserOutput {
         UmbrellaCorpLogo.printUmbrellaCorpLogo();
     }
 
-
-    public static void displayHomeScreenMenu() {
+    public static void printVendingMachine() {
         VendingMachineImg.printVendingMachineArtWithColor();
+
+    }
+    public static void displayHomeScreenMenu() {
+        printVendingMachine();
         System.out.println();
         System.out.println("**********************");
         System.out.println("Home");
@@ -161,5 +164,9 @@ public class UserOutput {
         System.out.println("Generating sales report...");
     }
 
+    public static void printSorryMessage() {
+        SorryText.printSorry();
+        System.out.println();
+    }
 
 }

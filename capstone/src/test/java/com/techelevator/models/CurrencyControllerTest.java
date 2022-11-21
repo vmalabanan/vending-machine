@@ -43,7 +43,7 @@ public class CurrencyControllerTest {
     public void addMoneyToMachine_ShouldPrint_PleaseEnterValidAmount_OnDecimal() throws AmountLessThanOneException {
 
         //Arrange
-        String expected = "Please enter a whole dollar amount only";
+        String expected = "Please enter a whole dollar amount only. For input string: \"4.5\"";
 
         //Act
         currencyController.addMoneyToMachine("4.5");

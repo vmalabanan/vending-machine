@@ -84,6 +84,7 @@ public class VendingMachine
                 UserOutput.salesReportMessage();
                 break;
             default:
+                UserOutput.printSorryMessage();
                 // invalid option try again
                 UserOutput.invalidSelection();
                 // prompt user to press enter to continue
@@ -107,6 +108,9 @@ public class VendingMachine
         while (keepLooping) {
             // clear screen
             UserOutput.clearScreen();
+
+            // output vending machine image
+            UserOutput.printVendingMachine();
 
             // show current money provided
             UserOutput.displayMoneyInMachine(currencyController);
@@ -187,6 +191,7 @@ public class VendingMachine
             else
             {
                 // invalid option try again
+                UserOutput.printSorryMessage();
                 UserOutput.invalidSelection();
 
                 // prompt user to press enter to continue
@@ -236,6 +241,7 @@ public class VendingMachine
             }
 
         } catch (InvalidIDException ex) {
+            UserOutput.printSorryMessage();
             System.out.println(ex.getMessage());
         }
     }
@@ -290,6 +296,7 @@ public class VendingMachine
         } catch (InsufficientFundsException ex) {
             System.out.println(ex.getMessage());
         } catch (SoldOutException ex) {
+            UserOutput.printSorryMessage();
             System.out.println(ex.getMessage());
         }
 

@@ -24,7 +24,8 @@ public class CurrencyController {
                 throw new AmountLessThanOneException("\nPlease enter a whole dollar amount greater than or equal to $1", amountInt);
             moneyInMachine = moneyInMachine.add(new BigDecimal(amount));
         } catch (NumberFormatException ex){
-            System.out.println(ex.getMessage());
+
+            System.out.println("Please enter a whole dollar amount only. " + ex.getMessage());
         }
 
 
