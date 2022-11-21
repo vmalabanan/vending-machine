@@ -71,7 +71,7 @@ public class VendingMachine
                 displayInventoryScreen();
                 break;
             case "2":
-                // make purchaseMenu
+                // make purchase
                 purchaseMenu();
                 break;
             case "3":
@@ -204,8 +204,9 @@ public class VendingMachine
         // clear screen
         UserOutput.clearScreen();
 
-        // Logs the purchaseMenu
-        logger.logMessage("DISPENSE CHANGE" , currencyController.getMoneyInMachine(), new BigDecimal(BigInteger.ZERO));
+        // Logs the dispensing of change
+        if (!currencyController.getMoneyInMachine().equals(BigDecimal.ZERO))
+            logger.logMessage("DISPENSE CHANGE" , currencyController.getMoneyInMachine(), new BigDecimal(BigInteger.ZERO));
 
         // dispense change to the user
         UserOutput.dispenseChange(currencyController);
@@ -219,17 +220,17 @@ public class VendingMachine
             if (!inventory.isIDValid(id)) throw new InvalidIDException();
             Product product = inventory.getProductByID(id);
 
-            // attempt to make purchaseMenu
+            // attempt to make purchase
             boolean wasPurchaseSuccessful = purchaseItem(product);
 
-            // if purchaseMenu was successful, output vending machine success message
+            // if purchase was successful, output vending machine success message
             if(wasPurchaseSuccessful) {
                 UserOutput.vendingMachineSuccessMessage(product);
 
-                // Logs the purchaseMenu in the transaction logger
+                // Logs the purchase in the transaction logger
                 logger.logMessage((product.getName() + " " + product.getId()) , product.getPrice(), currencyController.getMoneyInMachine());
 
-                // Logs the purchaseMenu in the Sales Report
+                // Logs the purchase in the Sales Report
                 salesReportPrinter.logSale(product);
             }
 
