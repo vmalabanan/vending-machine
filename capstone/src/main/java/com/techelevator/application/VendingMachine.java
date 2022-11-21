@@ -81,6 +81,7 @@ public class VendingMachine
             case "4":
                 // print sales report
                 salesReportPrinter.printReport();
+                UserOutput.salesReportMessage();
                 break;
             default:
                 // invalid option try again
