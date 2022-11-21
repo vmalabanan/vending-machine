@@ -291,7 +291,7 @@ public class VendingMachine
                 // if successful, return true
                 return true;
             }
-            else if (hasInsufficientFunds) throw new InsufficientFundsException("\nYou have insufficient funds to purchase that item", price, balance);
+            else if (hasInsufficientFunds) throw new InsufficientFundsException("\nYou have insufficient funds to purchase that item", balance, price);
             else throw new SoldOutException("\nSOLD OUT", product);
         } catch (InsufficientFundsException ex) {
             System.out.println(ex.getMessage());
