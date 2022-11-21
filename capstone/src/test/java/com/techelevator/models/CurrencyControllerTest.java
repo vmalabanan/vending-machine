@@ -88,7 +88,6 @@ public class CurrencyControllerTest {
 
     @Test(expected = InsufficientFundsException.class)
     public void subtractMoney_ShouldPrint_InsufficientFunds_OnZeroInMachine() throws InsufficientFundsException {
-
         //Arrange
         String expected = "You have insufficient funds for this purchaseMenu";
         BigDecimal price = new BigDecimal(10);
@@ -104,7 +103,6 @@ public class CurrencyControllerTest {
 
     @Test(expected = InsufficientFundsException.class)
     public void subtractMoney_ShouldPrint_InsufficientFunds_WhenPriceExceedsAvailableMoney() throws InsufficientFundsException, AmountLessThanOneException {
-
         //Arrange
         String expected = "You have insufficient funds for this purchaseMenu";
         currencyController.addMoneyToMachine("5");
@@ -119,6 +117,33 @@ public class CurrencyControllerTest {
 
     }
 
+    @Test
+    public void dispenseChange_should_return_empty_string_if_moneyInMachine_equals_zero() {
+        //Arrange
+        String expected = "";
+
+        //Act
+        String actual = currencyController.dispenseChange();
+
+        //Assert
+        assertEquals("Because there is no money in the machine", expected, actual);
+    }
+
+    @Test
+    public void dispenseChange_should_return_change_in_largest_denominations_possible_if_moneyInMachine_is_greater_than_zero() throws AmountLessThanOneException {
+        //Arrange
+        currencyController.addMoneyToMachine("36");
+        String expected = "\n1 x $20" +
+                          "\n1 x $10" +
+                          "\n1 x $5" +
+                          "\n1 x $1";
+
+        //Act
+        String actual = currencyController.dispenseChange();
+
+        //Assert
+        assertEquals("Because there is $36 in the machine, I should get back a $20, a $10 , a $5, and a $1", expected, actual);
+    }
 
 
     @After
