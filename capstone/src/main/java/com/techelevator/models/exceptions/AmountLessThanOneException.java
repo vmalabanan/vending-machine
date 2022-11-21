@@ -17,7 +17,7 @@ public class AmountLessThanOneException extends Exception {
 
         String message = super.getMessage();
 
-        return message + ": Illegal amount entered: $" + amountEntered;
+        return message + " --> Illegal amount entered: " + amountEntered;
     }
 
 }

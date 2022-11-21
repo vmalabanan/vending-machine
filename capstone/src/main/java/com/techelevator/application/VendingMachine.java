@@ -218,7 +218,7 @@ public class VendingMachine
 
     public void validateAndMakePurchase(String id) {
         try {
-            if (!inventory.isIDValid(id)) throw new InvalidIDException();
+            if (!inventory.isIDValid(id)) throw new InvalidIDException("\nThe ID you entered is invalid", id);
             Product product = inventory.getProductByID(id);
 
             // attempt to make purchase
@@ -236,7 +236,7 @@ public class VendingMachine
             }
 
         } catch (InvalidIDException ex) {
-            System.out.println("\nThe ID you entered is invalid");
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -270,6 +270,7 @@ public class VendingMachine
 
     public boolean purchaseItem(Product product){
         BigDecimal price = product.getPrice();
+        BigDecimal balance = currencyController.getMoneyInMachine();
 
         boolean hasInsufficientFunds = currencyController.getMoneyInMachine().compareTo(price) < 0;
         boolean isSoldOut = inventory.getQuantity(product).compareTo(0) <= 0;
@@ -284,12 +285,12 @@ public class VendingMachine
                 // if successful, return true
                 return true;
             }
-            else if (hasInsufficientFunds) throw new InsufficientFundsException();
-            else throw new SoldOutException();
+            else if (hasInsufficientFunds) throw new InsufficientFundsException("\nYou have insufficient funds to purchase that item", price, balance);
+            else throw new SoldOutException("\nSOLD OUT", product);
         } catch (InsufficientFundsException ex) {
-            System.out.println("\nYou have insufficient funds for this purchase");
+            System.out.println(ex.getMessage());
         } catch (SoldOutException ex) {
-            System.out.println("\nThat item is sold out and unavailable for purchase");
+            System.out.println(ex.getMessage());
         }
 
         return false;
