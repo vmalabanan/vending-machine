@@ -28,7 +28,7 @@ public class ProductGrid {
         // line 3
         System.out.println(lineBuilder("|", "-", 4));
         // line 4
-        System.out.println(productColors[0] + getRowNamePlusSpaces(product1) + lineBuilder(product1, "name", inventory) + productColors[1] + lineBuilder(product2, "name", inventory) + productColors[2] + lineBuilder(product3, "name", inventory) + productColors[3] + lineBuilder(product4, "name", inventory));
+        System.out.println(colors[colorCount] + getRowNamePlusSpaces(product1) + productColors[0] + lineBuilder(product1, "name", inventory) + productColors[1] + lineBuilder(product2, "name", inventory) + productColors[2] + lineBuilder(product3, "name", inventory) + productColors[3] + lineBuilder(product4, "name", inventory));
         // line 5
         System.out.println(productColors[0] + LEFT_SPACING + lineBuilder(product1, "price", inventory) + productColors[1] + lineBuilder(product2, "price", inventory) + productColors[2] + lineBuilder(product3, "price", inventory) + productColors[3] + lineBuilder(product4, "price", inventory));
         // line 6
