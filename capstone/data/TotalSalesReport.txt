@@ -3,11 +3,11 @@ Stackers|2
 Grain Waves|0
 Cloud Popcorn|0
 Moonpie|1
-Cowtales|8
+Cowtales|13
 Wonka Bar|0
 Crunchie|0
 Cola|9
-Dr. Salt|4
+Dr. Salt|14
 Mountain Melter|6
 Heavy|0
 U-Chews|17
@@ -16,4 +16,4 @@ Chiclets|5
 Triplemint|2
 
 
-**TOTAL SALES** $170.15
+**TOTAL SALES** $192.65
