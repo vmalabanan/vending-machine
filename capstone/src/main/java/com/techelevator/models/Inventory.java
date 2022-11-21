@@ -95,7 +95,7 @@ public class Inventory {
         }
             throw new InvalidIDException("\nThe ID you have entered is invalid", id);
         } catch (InvalidIDException ex) {
-            System.out.println("The ID you entered is invalid");
+            System.out.println(ex.getMessage());
         }
         return null;
     }

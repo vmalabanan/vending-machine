@@ -236,7 +236,7 @@ public class VendingMachine
             }
 
         } catch (InvalidIDException ex) {
-            System.out.println("\nThe ID you entered is invalid");
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -290,7 +290,7 @@ public class VendingMachine
         } catch (InsufficientFundsException ex) {
             System.out.println(ex.getMessage());
         } catch (SoldOutException ex) {
-            System.out.println("\nThat item is sold out and unavailable for purchase");
+            System.out.println(ex.getMessage());
         }
 
         return false;

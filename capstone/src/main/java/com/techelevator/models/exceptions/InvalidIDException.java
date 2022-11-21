@@ -17,7 +17,7 @@ public class InvalidIDException extends Throwable {
 
         String message = super.getMessage();
 
-        message += " --> Invalid ID entered: " + invalidID;
+        message += "\n --> Invalid ID entered: " + invalidID;
 
         return message;
     }

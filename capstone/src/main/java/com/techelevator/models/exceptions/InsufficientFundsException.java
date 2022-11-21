@@ -19,8 +19,8 @@ public class InsufficientFundsException extends Exception{
 
         String message = super.getMessage();
 
-        message += " --> Your current balance: $" + balance + " --> Price of item: $" + price;
-        message += " --> Amount needed to feed machine in order to purchase: $" + price.subtract(balance);
+        message += "\n --> Your current balance: $" + balance + " --> Price of item: $" + price;
+        message += "\n --> Amount needed to feed machine in order to purchase: $" + price.subtract(balance);
 
         return message;
     }
