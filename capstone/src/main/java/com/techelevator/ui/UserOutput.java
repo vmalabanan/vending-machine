@@ -112,7 +112,7 @@ public class UserOutput {
             System.out.println();
         }
         else if (product.getType().equalsIgnoreCase("candy")) {
-            System.out.print(Colors.BLUE + "Munch Munch, Yum!" + Colors.RESET);
+            System.out.print(Colors.GREEN + "Munch Munch, Yum!" + Colors.RESET);
             System.out.println("\n");
             Candy.printCandyWithColor();
             System.out.println();

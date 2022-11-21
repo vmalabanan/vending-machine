@@ -24,6 +24,9 @@ public class VendingMachine
 
         public void run()
     {
+        // clear screen
+        UserOutput.clearScreen();
+
         // display a welcome screen
         welcome();
 
@@ -224,7 +227,7 @@ public class VendingMachine
                 UserOutput.vendingMachineSuccessMessage(product);
 
                 // Logs the purchaseMenu in the transaction logger
-                logger.logMessage((product.getName() + product.getId()) , product.getPrice(), currencyController.getMoneyInMachine());
+                logger.logMessage((product.getName() + " " + product.getId()) , product.getPrice(), currencyController.getMoneyInMachine());
 
                 // Logs the purchaseMenu in the Sales Report
                 salesReportPrinter.logSale(product);
