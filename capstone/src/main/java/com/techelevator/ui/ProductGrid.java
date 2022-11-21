@@ -33,7 +33,7 @@ public class ProductGrid {
         System.out.println(productColors[0] + LEFT_SPACING + lineBuilder(product1, "price", inventory) + productColors[1] + lineBuilder(product2, "price", inventory) + productColors[2] + lineBuilder(product3, "price", inventory) + productColors[3] + lineBuilder(product4, "price", inventory));
         // line 6
         System.out.println(productColors[0] + LEFT_SPACING + lineBuilder(product1, "quantity", inventory) + productColors[1] + lineBuilder(product2, "quantity", inventory) + productColors[2] + lineBuilder(product3, "quantity", inventory) + productColors[3] + lineBuilder(product4, "quantity", inventory));
-        // line 17
+        // line 7
         System.out.println(lineBuilder(" ", "+", 4));
         // Advanced the colors to the next for the next row of items
         colorCount++;

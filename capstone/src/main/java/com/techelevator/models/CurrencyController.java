@@ -41,9 +41,8 @@ public class CurrencyController {
     }
 
     public String dispenseChange() {
-        BigDecimal balance = moneyInMachine;
         String change = "";
-        int quantity = 0;
+        int quantity;
 
         // create array of money denominations
         BigDecimal[] denominations = new BigDecimal[]{
