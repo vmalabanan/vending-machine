@@ -115,7 +115,6 @@ public class ProductGrid {
         return line;
     }
 
-
     public static void getColorsForProducts(int rowNumber, List<Product> products, Inventory inventory) {
         for (Product product : products) {
             if (inventory.getProducts().get(product) <= 0) {
@@ -123,9 +122,7 @@ public class ProductGrid {
             } else {
                 productColors.put(product.getId(), COLORS[rowNumber % 4]);
             }
-
         }
     }
-
 
 }
