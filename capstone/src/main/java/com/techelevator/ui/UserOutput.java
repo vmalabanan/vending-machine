@@ -68,18 +68,27 @@ public class UserOutput {
         printMenu("Display Vending Machine Items", "Purchase", "Exit");
     }
 
+//    public static void displayInventoryAsGrid(Inventory inventory) {
+//        printHeader("Products");
+//        System.out.println();
+//
+//        for (int i = 0; i < Inventory.getOrganizedProducts().size(); i+=4) {
+//            ProductGrid.printProductGrid(Inventory.getOrganizedProducts().get(i), Inventory.getOrganizedProducts().get(i + 1), Inventory.getOrganizedProducts().get(i + 2), Inventory.getOrganizedProducts().get(i + 3), inventory);
+//            System.out.println();
+//        }
+//        // After printing out the entire machine, resets the color counter to 0
+//        ProductGrid.resetCounter();
+//        System.out.print(Colors.RESET);
+//
+//    }
+
     public static void displayInventoryAsGrid(Inventory inventory) {
         printHeader("Products");
         System.out.println();
 
-        for (int i = 0; i < Inventory.getOrganizedProducts().size(); i+=4) {
-            ProductGrid.printProductGrid(Inventory.getOrganizedProducts().get(i), Inventory.getOrganizedProducts().get(i + 1), Inventory.getOrganizedProducts().get(i + 2), Inventory.getOrganizedProducts().get(i + 3), inventory);
-            System.out.println();
-        }
-        // After printing out the entire machine, resets the color counter to 0
-        ProductGrid.resetCounter();
-        System.out.print(Colors.RESET);
+        ProductGrid.printProductGrid(Inventory.getOrganizedProducts(), inventory);
 
+        System.out.print(Colors.RESET);
     }
 
     public static void displayMoneyInMachine(CurrencyController currencyController) {
@@ -106,8 +115,12 @@ public class UserOutput {
            return(Colors.RED + "Glug Glug, Yum!" + Colors.RESET);
         }
 
-        else {
+        else if (product.getType().equalsIgnoreCase("gum")) {
            return(Colors.PURPLE + "Chew Chew, Yum!" + Colors.RESET);
+        }
+
+         else {
+            return(Colors.CYAN + "Mmm Mmm, Yum!" + Colors.RESET);
         }
     }
 
@@ -121,8 +134,11 @@ public class UserOutput {
         else if (product.getType().equalsIgnoreCase("drink")) {
         Soda.printSodaWithColor();
         }
-        else {
+        else if (product.getType().equalsIgnoreCase("gum")) {
           Gum.printGumWithColor();
+        }
+        else {
+            OtherProductType.printOtherProductTypeWithColor();
         }
 
     }

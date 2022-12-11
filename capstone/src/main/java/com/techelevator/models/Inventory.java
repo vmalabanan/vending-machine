@@ -11,7 +11,8 @@ import java.util.*;
 public class Inventory {
     // Properties
     private Map<Product, Integer> inventory;
-    static List<Product> organizedProducts;
+    private static List<Product> organizedProducts;
+    private static Map<String, Integer> productTypeAndQuantity;
 
     // Constructor
     public Inventory() {
@@ -23,6 +24,7 @@ public class Inventory {
     private void loadInventory() {
         inventory = new HashMap<>();
         organizedProducts = new ArrayList<>();
+        productTypeAndQuantity = new HashMap<>();
 
         File productsFile = new File("data/vendingmachine.csv");
         try (Scanner reader = new Scanner(productsFile)) {
@@ -52,6 +54,9 @@ public class Inventory {
 
                     // Add the products to a list for display purposes
                     organizedProducts.add(product);
+
+                    // Add product type and count of items of each product type to map (for display purposes - we will use this to print ProductGrid)
+                    productTypeAndQuantity.put(product.getType(), productTypeAndQuantity.getOrDefault(product.getType(), 0) + 1);
                 } catch (InvalidProductFileException e) {
                     System.out.println(e.getMessage());
 
@@ -63,6 +68,7 @@ public class Inventory {
 
         // Sort the product list by product id (in case productsFile is not already sorted)
         Collections.sort(organizedProducts);
+
     }
 
     public Map<Product, Integer> getProducts() {
@@ -70,6 +76,8 @@ public class Inventory {
     }
 
     public static List<Product> getOrganizedProducts() { return organizedProducts; }
+
+    public static Map<String, Integer> getProductTypeAndQuantity() { return productTypeAndQuantity; }
 
     public void decrementQuantity(Product product) throws SoldOutException {
         int quantity = inventory.get(product);
@@ -113,5 +121,7 @@ public class Inventory {
     public Integer getQuantity(Product product) {
         return inventory.get(product);
     }
+
+
 }
 
