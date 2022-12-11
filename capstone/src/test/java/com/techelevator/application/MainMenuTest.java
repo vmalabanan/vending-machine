@@ -19,12 +19,11 @@ public class MainMenuTest {
     private VendingMachine vendingMachine;
 
 
-
     @Before
     public void setup(){
         System.setOut(new PrintStream(outputStreamCaptor));
         vendingMachine = new VendingMachine();
-
+        System.setIn(new ByteArrayInputStream("".getBytes()));
     }
 
     @After
@@ -51,11 +50,10 @@ public class MainMenuTest {
         assertEquals("Because the inventory screen should display if you select option 1", expected, actual);
 
     }
-
+///* TODO: Figure out why we're losing bytes between integration tests */
 //    @Test
 //    public void mainMenu_should_display_purchase_screen_if_option_equals_2() {
 //        //Arrange
-//        VendingMachine vendingMachine = new VendingMachine();
 //        ByteArrayInputStream inTwo = new ByteArrayInputStream("2\n3\n\n3\n".getBytes());
 //        System.setIn(inTwo);
 //        String expected = mainMenu_output_if_option_equals_2().trim();
@@ -71,7 +69,7 @@ public class MainMenuTest {
 //        assertEquals("Because the purchaseMenu screen should display if you select option 2", expected, actual);
 //
 //    }
-//
+
 //    @Test
 //    public void mainMenu_should_display_goodbye_screen_if_option_equals_3() {
 //
@@ -129,7 +127,7 @@ public class MainMenuTest {
     }
 
     private String mainMenu_output_if_option_equals_2() {
-        return "[H[2J**********************Home**********************1)DisplayVendingMachineItems2)Purchase3)ExitPleasemakeaselection:[H[2J[H[2JBalance:$0.001)FeedMoney2)SelectProduct3)FinishTransactionPleasemakeaselection:[H[2JPressentertocontinue[H[2J**********************Home**********************1)DisplayVendingMachineItems2)Purchase3)ExitPleasemakeaselection:[H[2JThankyouforshoppingwithUmbrellaCorp.";
+        return "[H\u001B[2J_____________________________________|||_________________________|||____________|||||\u001B[47m\u001B[0m||\u001B[41m\u001B[0m||\u001B[44m\u001B[0m||\u001B[46m\u001B[0m|||||'---''---''---''---'||||____________|---||||\u001B[45m\u001B[0m||\u001B[47m\u001B[0m||\u001B[43m\u001B[0m||\u001B[42m\u001B[0m||{ooo}|||'---''---''---''---'|{ooo}|||____________|{ooo}||||\u001B[42m\u001B[0m||\u001B[44m\u001B[0m||\u001B[45m\u001B[0m||\u001B[41m\u001B[0m||---|||'---''---''---''---'|\u001B[32m$$$\u001B[0m|||____________|||||\u001B[43m\u001B[0m||\u001B[46m\u001B[0m||\u001B[41m\u001B[0m||\u001B[44m\u001B[0m|||||'---''---''---''---'|||'_________________________'||___||===================={___}||||||====================|____________________________________**********************Home**********************1)DisplayVendingMachineItems2)Purchase3)ExitPleasemakeaselection:\u001B[H\u001B[2J\u001B[H\u001B[2J_____________________________________|||_________________________|||____________|||||\u001B[47m\u001B[0m||\u001B[41m\u001B[0m||\u001B[44m\u001B[0m||\u001B[46m\u001B[0m|||||'---''---''---''---'||||____________|---||||\u001B[45m\u001B[0m||\u001B[47m\u001B[0m||\u001B[43m\u001B[0m||\u001B[42m\u001B[0m||{ooo}|||'---''---''---''---'|{ooo}|||____________|{ooo}||||\u001B[42m\u001B[0m||\u001B[44m\u001B[0m||\u001B[45m\u001B[0m||\u001B[41m\u001B[0m||---|||'---''---''---''---'|\u001B[32m$$$\u001B[0m|||____________|||||\u001B[43m\u001B[0m||\u001B[46m\u001B[0m||\u001B[41m\u001B[0m||\u001B[44m\u001B[0m|||||'---''---''---''---'|||'_________________________'||___||===================={___}||||||====================|____________________________________Balance:$0.001)FeedMoney2)SelectProduct3)FinishTransactionPleasemakeaselection:\u001B[H\u001B[2JPressentertocontinue\u001B[H\u001B[2J_____________________________________|||_________________________|||____________|||||\u001B[47m\u001B[0m||\u001B[41m\u001B[0m||\u001B[44m\u001B[0m||\u001B[46m\u001B[0m|||||'---''---''---''---'||||____________|---||||\u001B[45m\u001B[0m||\u001B[47m\u001B[0m||\u001B[43m\u001B[0m||\u001B[42m\u001B[0m||{ooo}|||'---''---''---''---'|{ooo}|||____________|{ooo}||||\u001B[42m\u001B[0m||\u001B[44m\u001B[0m||\u001B[45m\u001B[0m||\u001B[41m\u001B[0m||---|||'---''---''---''---'|\u001B[32m$$$\u001B[0m|||____________|||||\u001B[43m\u001B[0m||\u001B[46m\u001B[0m||\u001B[41m\u001B[0m||\u001B[44m\u001B[0m|||||'---''---''---''---'|||'_________________________'||___||===================={___}||||||====================|____________________________________**********************Home**********************1)DisplayVendingMachineItems2)Purchase3)ExitPleasemakeaselection:\u001B[H\u001B[2J\u001B[31m,,,,,,,////////,,,///////////////,,,,///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////**///////////////////////////////**///////////////////////////////////////*//////////////////////////////////////*//////////////////////////////////////*/////////////////////////////////////*///////////////,,/////////////////////////////////,,//////////////////////////////,,*,,,,,/////////////////////////,,.///////////////////,,,/////////////\u001B[0mThankyouforshoppingwithUmbrellaCorporation.\u001B[31m\"OurBusinessIsLifeItself.\"\u001B[0m";
     }
 
     public String mainMenu_if_option_equals_3(){
