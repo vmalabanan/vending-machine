@@ -4,48 +4,43 @@ import java.util.Scanner;
 public class UserInput {
     private static Scanner input = new Scanner(System.in);
 
-    public static String getSelection() {
-        System.out.print("\nPlease make a selection: ");
+    public static String getInput(String message) {
+        System.out.print("\n" + message);
 
         return input.nextLine();
     }
 
+    public static String getSelection() {
+        return getInput("Please make a selection: ");
+    }
 
     public static String getPayment() {
-
-        System.out.print("Please enter the dollar amount you wish to add: $");
-
-        return input.nextLine();
+        return getInput("Please enter the dollar amount you wish to add: $");
     }
 
     public static String addMoreMoneyPrompt() {
-        System.out.print("\nAdd more money? (Y/N): ");
-
-        return input.nextLine();
-
+        return getInput("Add more money? (Y/N): ");
     }
 
     public static String buyAnotherItemPrompt() {
-        System.out.print("\nBuy another item? (Y/N): ");
-
-        return input.nextLine();
-
+        return getInput("Buy another item? (Y/N): ");
     }
 
     public static String getUserItemId(){
-        System.out.print("\nEnter the ID of the item you wish to buy: ");
+        return getInput("Enter the ID of the item you wish to buy: ");
+    }
 
-        return input.nextLine();
+    public static void getInputNoReturn(String message) {
+        System.out.print("\n" + message);
+
+        input.nextLine();
     }
 
     public static void pressEnterToContinuePrompt() {
-        System.out.print("\nPress enter to continue ");
-
-        input.nextLine();
+        getInputNoReturn("Press enter to continue ");
     }
 
     public static void noMoneyInMachineMessage() {
-        System.out.println("Please input funds. Press enter to return to previous screen.");
-        input.nextLine();
+        getInputNoReturn("Please input funds. Press enter to return to previous screen.");
     }
 }

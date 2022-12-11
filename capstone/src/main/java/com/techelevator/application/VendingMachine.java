@@ -22,7 +22,7 @@ public class VendingMachine
     private SalesReportPrinter salesReportPrinter = new SalesReportPrinter("data");
 
 
-        public void run()
+    public void run()
     {
         // clear screen
         UserOutput.clearScreen();
