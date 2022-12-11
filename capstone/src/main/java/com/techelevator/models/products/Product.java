@@ -2,7 +2,7 @@ package com.techelevator.models.products;
 
 import java.math.BigDecimal;
 
-public class Product {
+public class Product implements Comparable<Product> {
 
     // Properties
     private String id;
@@ -37,5 +37,10 @@ public class Product {
     @Override
     public String toString(){
         return id + ": " + name + " - price: $" + price;
+    }
+
+    @Override
+    public int compareTo(Product product) {
+        return getId().compareTo(product.getId());
     }
 }

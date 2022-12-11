@@ -1,20 +1,16 @@
 package com.techelevator.models;
-
 import com.techelevator.models.exceptions.InvalidIDException;
 import com.techelevator.models.exceptions.SoldOutException;
 import com.techelevator.models.products.Product;
-
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 
 public class Inventory {
-
     // Properties
     private Map<Product, Integer> inventory;
     static List<Product> organizedProducts;
-
 
     // Constructor
     public Inventory() {
@@ -23,17 +19,18 @@ public class Inventory {
     }
 
     // Methods
-
     private void loadInventory() {
-
         inventory = new HashMap<>();
         organizedProducts = new ArrayList<>();
 
         File productsFile = new File("data/vendingmachine.csv");
         try (Scanner reader = new Scanner(productsFile)) {
-
             while (reader.hasNextLine()) {
                 String line = reader.nextLine();
+
+                // ignore empty lines in productsFile
+                if (line.isEmpty()) continue;
+
                 String[] columns = line.split("\\|");
 
                 String id = columns[0];
@@ -46,13 +43,15 @@ public class Inventory {
                 // Loads 5 of the product everytime the vending machine initializes
                 inventory.put(product, 5);
 
-                // Arranges the products in their organized array for display purposes
+                // Add the products to a list for display purposes
                 organizedProducts.add(product);
             }
         } catch (IOException ex) {
-            // TO DO - Logger
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }
+
+        // Sort the product list by product id (in case productsFile is not already sorted)
+        Collections.sort(organizedProducts);
     }
 
     public Map<Product, Integer> getProducts() {

@@ -1,6 +1,5 @@
 package com.techelevator.models;
 
-import com.techelevator.application.VendingMachine;
 import com.techelevator.models.exceptions.AmountLessThanOneException;
 import com.techelevator.models.exceptions.InsufficientFundsException;
 import java.math.BigDecimal;
