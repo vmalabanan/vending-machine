@@ -4,7 +4,7 @@ import com.techelevator.models.Inventory;
 import com.techelevator.models.products.Product;
 import com.techelevator.view.Colors;
 
-import java.awt.*;
+
 import java.text.NumberFormat;
 
 public class ProductGrid {
@@ -77,7 +77,6 @@ public class ProductGrid {
 //    }
 
     private static String lineBuilder(String edgeChar, String innerChar, int numberOfCells) {
-
 
         String line = LEFT_SPACING;
 

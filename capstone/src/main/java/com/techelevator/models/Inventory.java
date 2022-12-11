@@ -1,5 +1,6 @@
 package com.techelevator.models;
 import com.techelevator.models.exceptions.InvalidIDException;
+import com.techelevator.models.exceptions.InvalidProductFileException;
 import com.techelevator.models.exceptions.SoldOutException;
 import com.techelevator.models.products.Product;
 import java.io.File;
@@ -31,20 +32,30 @@ public class Inventory {
                 // ignore empty lines in productsFile
                 if (line.isEmpty()) continue;
 
-                String[] columns = line.split("\\|");
+                try {
+                    String[] columns = line.split("\\|");
 
-                String id = columns[0];
-                String name = columns[1];
-                BigDecimal price = new BigDecimal(columns[2]);
-                String type = columns[3];
+                    // throw an exception if all four columns are not present
+                    if (columns.length != 4) {
+                        throw new InvalidProductFileException(line);
+                    }
 
-                Product product = new Product(id, name, price, type);
+                    String id = columns[0];
+                    String name = columns[1];
+                    BigDecimal price = new BigDecimal(columns[2]);
+                    String type = columns[3];
 
-                // Loads 5 of the product everytime the vending machine initializes
-                inventory.put(product, 5);
+                    Product product = new Product(id, name, price, type);
 
-                // Add the products to a list for display purposes
-                organizedProducts.add(product);
+                    // Loads 5 of the product every time the vending machine initializes
+                    inventory.put(product, 5);
+
+                    // Add the products to a list for display purposes
+                    organizedProducts.add(product);
+                } catch (InvalidProductFileException e) {
+                    System.out.println(e.getMessage());
+
+                }
             }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());

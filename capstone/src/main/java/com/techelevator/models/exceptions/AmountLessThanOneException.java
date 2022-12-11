@@ -1,7 +1,5 @@
 package com.techelevator.models.exceptions;
 
-import com.techelevator.models.file_io.Logger;
-
 public class AmountLessThanOneException extends Exception {
 
     private int amountEntered;

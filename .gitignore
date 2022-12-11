@@ -81,3 +81,7 @@ cypress/videos
 
 #ignore .txt files
 *.txt
+
+#ignore testing files
+vendingmachine - ORIGINAL.csv
+vendingmachine - TESTING.csv
