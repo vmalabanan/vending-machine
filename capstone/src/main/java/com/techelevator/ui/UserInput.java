@@ -10,6 +10,12 @@ public class UserInput {
         return input.nextLine();
     }
 
+    public static void getInputNoReturn(String message) {
+        System.out.print("\n" + message);
+
+        input.nextLine();
+    }
+
     public static String getSelection() {
         return getInput("Please make a selection: ");
     }
@@ -28,12 +34,6 @@ public class UserInput {
 
     public static String getUserItemId(){
         return getInput("Enter the ID of the item you wish to buy: ");
-    }
-
-    public static void getInputNoReturn(String message) {
-        System.out.print("\n" + message);
-
-        input.nextLine();
     }
 
     public static void pressEnterToContinuePrompt() {
