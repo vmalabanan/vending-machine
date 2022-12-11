@@ -23,6 +23,7 @@ public class ChipBag {
         System.out.println("            |                            |");
         System.out.println("            [|||||||||||||||||||||||||||||");
 
+
     }
     public static void printChipBagWithColor() {
         System.out.println("\t\t" + Colors.BLACK + "____________________________" + Colors.RESET + Colors.BLACK);
@@ -43,6 +44,5 @@ public class ChipBag {
         System.out.println("\t\t"  + Colors.YELLOW_BACKGROUND + "|                            |" + Colors.RESET + Colors.BLACK);
         System.out.println("\t\t"  + Colors.YELLOW_BACKGROUND + "|                            |" + Colors.RESET + Colors.BLACK);
         System.out.println("\t\t"  + Colors.YELLOW_BACKGROUND + "[|||||||||||||||||||||||||||||" + Colors.RESET);
-
     }
 }

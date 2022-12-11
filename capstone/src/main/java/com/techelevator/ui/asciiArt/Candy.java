@@ -24,4 +24,5 @@ public class Candy {
         System.out.println("\t\t         '.___/:::'" + Colors.RESET);
 
     }
+
 }

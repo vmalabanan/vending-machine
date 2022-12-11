@@ -4,7 +4,7 @@ import com.techelevator.view.Colors;
 
 public class Soda {
     public static void printSoda() {
-
+        System.out.println();
         System.out.println("                |||||||");
         System.out.println("               ,|||||||,");
         System.out.println("              .'       '.");
@@ -31,7 +31,7 @@ public class Soda {
     }
 
     public static void printSodaWithColor() {
-
+        System.out.println();
         System.out.println("\t\t\t         |||||||");
         System.out.println("\t\t\t        ,|||||||,");
         System.out.println("\t\t\t       .'       '.");
