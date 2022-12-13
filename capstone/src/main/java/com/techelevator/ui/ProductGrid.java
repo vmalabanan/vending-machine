@@ -9,15 +9,20 @@ import java.util.List;
 import java.util.Map;
 
 public class ProductGrid {
-    private static final int NUM_OF_SPACES_IN_CELL = 19;
-    private static final int NUM_OF_CHARS_ON_SYMBOL_LINES = 20;
-    private static final int NUM_OF_SPACES_BEFORE_EACH_ROW = 6;
-    private static final String LEFT_SPACING = "       ";
+    private static int numOfSpacesInCell;
+    private static int numOfCharsOnSymbolLines;
+    private static int numOfSpacesBeforeEachRow;
+    private static String leftSpacing;
     private static final String[] COLORS = new String[]{Colors.GREEN, Colors.CYAN, Colors.PURPLE, Colors.YELLOW};
     private static Map<String, String> productColors = new HashMap<>();
 
     public static void printProductGrid(List<Product> products, Inventory inventory) {
         int count = 0;
+
+        setNumOfSpacesBeforeEachRow();
+        setLeftSpacing();
+        setNumOfSpacesInCell(products);
+        setNumOfCharsOnSymbolLines();
 
         // for each product type, output a row
         for (int i = 0; i < Inventory.getProductTypeAndQuantity().keySet().size(); i++) {
@@ -57,13 +62,13 @@ public class ProductGrid {
     private static String lineBuilder(List<Product> products, String attribute, Inventory inventory, boolean includeSpacing) {
         String line = "";
         if (includeSpacing)
-            line += LEFT_SPACING;
+            line += leftSpacing;
 
         for (int i = 0; i < products.size(); i++) {
             Product product = products.get(i);
             line += productColors.get(product.getId());
             String textToDisplay = getAttribute(product, attribute, inventory);
-            int difference = NUM_OF_SPACES_IN_CELL - textToDisplay.length();
+            int difference = numOfSpacesInCell - textToDisplay.length();
             line += "| " + textToDisplay;
             for (int j = 0; j < difference; j++) line += " ";
             line += "|\t\t";
@@ -74,11 +79,11 @@ public class ProductGrid {
 
 
     private static String lineBuilder(List<Product> products, String edgeChar, String innerChar) {
-        String line = LEFT_SPACING;
+        String line = leftSpacing;
 
         for (int i = 0; i < products.size(); i++) {
             line += productColors.get(products.get(i).getId()) + edgeChar;
-            for (int j = 0; j < NUM_OF_CHARS_ON_SYMBOL_LINES; j++) {
+            for (int j = 0; j < numOfCharsOnSymbolLines; j++) {
                 line += innerChar;
             }
             line += edgeChar + "\t\t";
@@ -108,7 +113,7 @@ public class ProductGrid {
     private static String getRowNamePlusSpaces(Product product) {
         String productType = product.getType().toUpperCase();
         String line = " " + productType;
-        int difference = NUM_OF_SPACES_BEFORE_EACH_ROW - productType.length();
+        int difference = numOfSpacesBeforeEachRow - productType.length();
         for (int i = 0; i < difference; i++) {
             line += " ";
         }
@@ -123,6 +128,41 @@ public class ProductGrid {
                 productColors.put(product.getId(), COLORS[rowNumber % 4]);
             }
         }
+    }
+
+    private static void setNumOfSpacesBeforeEachRow() {
+        String longestWord = "";
+        for (String productType : Inventory.getProductTypeAndQuantity().keySet()) {
+            if (productType.length() > longestWord.length()) {
+                longestWord = productType;
+            }
+        }
+        numOfSpacesBeforeEachRow = longestWord.length() + 1;
+    }
+
+    private static void setLeftSpacing() {
+        String spacing = " ";
+        for (int i = 0; i < numOfSpacesBeforeEachRow; i++) {
+            spacing += " ";
+        }
+        leftSpacing = spacing;
+    }
+
+    private static void setNumOfSpacesInCell(List<Product> products) {
+        String longestWord = "";
+        String inStock = "XX in stock";
+        int minimumNumOfSpaces = inStock.length(); // At a minimum, must be able to display in-stock message
+        for (int i = 0; i < products.size(); i++) {
+            String productName = products.get(i).getName();
+            if (productName.length() > longestWord.length()) {
+                longestWord = productName;
+            }
+        }
+        numOfSpacesInCell = Math.max(longestWord.length(), minimumNumOfSpaces) + 1;
+    }
+
+    private static void setNumOfCharsOnSymbolLines() {
+        numOfCharsOnSymbolLines = numOfSpacesInCell + 1;
     }
 
 }
