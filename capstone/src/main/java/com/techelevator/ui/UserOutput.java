@@ -68,20 +68,6 @@ public class UserOutput {
         printMenu("Display Vending Machine Items", "Purchase", "Exit");
     }
 
-//    public static void displayInventoryAsGrid(Inventory inventory) {
-//        printHeader("Products");
-//        System.out.println();
-//
-//        for (int i = 0; i < Inventory.getOrganizedProducts().size(); i+=4) {
-//            ProductGrid.printProductGrid(Inventory.getOrganizedProducts().get(i), Inventory.getOrganizedProducts().get(i + 1), Inventory.getOrganizedProducts().get(i + 2), Inventory.getOrganizedProducts().get(i + 3), inventory);
-//            System.out.println();
-//        }
-//        // After printing out the entire machine, resets the color counter to 0
-//        ProductGrid.resetCounter();
-//        System.out.print(Colors.RESET);
-//
-//    }
-
     public static void displayInventoryAsGrid(Inventory inventory) {
         printHeader("Products");
         System.out.println();
