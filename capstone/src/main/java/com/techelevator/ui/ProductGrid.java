@@ -57,6 +57,7 @@ public class ProductGrid {
         // line 7
         System.out.println(lineBuilder(products, " ", "+"));
 
+        System.out.print(Colors.RESET);
     }
 
     private static String lineBuilder(List<Product> products, String attribute, Inventory inventory, boolean includeSpacing) {

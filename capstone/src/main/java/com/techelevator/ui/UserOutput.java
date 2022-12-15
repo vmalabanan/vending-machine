@@ -74,7 +74,6 @@ public class UserOutput {
 
         ProductGrid.printProductGrid(Inventory.getOrganizedProducts(), inventory);
 
-        System.out.print(Colors.RESET);
     }
 
     public static void displayMoneyInMachine(CurrencyController currencyController) {
